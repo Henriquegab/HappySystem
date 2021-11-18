@@ -267,7 +267,7 @@ return [
                     'label_color' => 'success',
                 ],
                 [
-                    'text'        => 'Atualizar Informações',
+                    'text'        => 'Atualizar Cliente',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-fw fa-user',
                     'label'       => 4,
@@ -305,7 +305,7 @@ return [
                     'label_color' => 'success',
                 ],
                 [
-                    'text'        => 'Atualizar Informações',
+                    'text'        => 'Atualizar Produto',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
                     'label'       => 4,
@@ -313,6 +313,44 @@ return [
                 ],
                 [
                     'text'        => 'Excluir Produto',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+
+            ]
+        ],
+
+        ['header' => 'GERENCIAMENTO DE PEDIDOS'],
+
+        [
+            'text'    => 'Pedidos',
+            'icon'    => 'fas fa-shopping-basket',
+            'submenu' => [
+                [
+                    'text'        => 'Cadastro de Pedidos',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Listagem de Pedidos',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Atualizar Pedido',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Excluir Pedido',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
                     'label'       => 4,
