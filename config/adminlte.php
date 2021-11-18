@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Happy System',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -246,14 +246,84 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'GERENCIAMENTO DE CLIENTES'],
+
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'    => 'Clientes',
+            'icon'    => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text'        => 'Cadastro de Clientes',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-fw fa-user',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Listagem de Clientes',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-fw fa-user',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Atualizar Informações',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-fw fa-user',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Excluir Cliente',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-fw fa-user',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+
+            ]
         ],
+
+        ['header' => 'GERENCIAMENTO DE PRODUTOS'],
+
+        [
+            'text'    => 'Produtos',
+            'icon'    => 'fas fa-shopping-basket',
+            'submenu' => [
+                [
+                    'text'        => 'Cadastro de Produtos',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Listagem de Produtos',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Atualizar Informações',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Excluir Produto',
+                    'url'         => 'admin/settings',
+                    'icon'        => 'fas fa-shopping-basket',
+                    'label'       => 4,
+                    'label_color' => 'success',
+                ],
+
+            ]
+        ],
+       
         ['header' => 'account_settings'],
+        
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
