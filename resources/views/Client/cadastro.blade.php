@@ -35,7 +35,7 @@
             <x-adminlte-input name="numerocasa" type="name" label="Número" placeholder="2"
                     fgroup-class="col-md-1" disable-feedback/>
 
-            <x-adminlte-input name="CEP" type="number" label="CEP" placeholder="39402000"
+            <x-adminlte-input name="cep" type="name" label="CEP" placeholder="39402000"
             fgroup-class="col-md-2" disable-feedback/>
 
             <x-adminlte-input name="uf" type="name" placeholder="MG" fgroup-class="col-md-2" label="UF"/>

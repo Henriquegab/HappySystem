@@ -40,12 +40,13 @@ class ClienteController extends Controller
         $rules = [
             'nome' => 'required|min:3|max:40',
             'email' => 'email',
-            'cpf' => 'required',
+            'cpf' => 'required|cpf',
             'sexo' => 'required',
             'endereco' => 'required|min:3',
             'numerocasa' => 'required|min:1',
             'cep' => 'required',
-            'uf' => 'required',
+            'uf' => 'required|uf',
+
 
             
 
@@ -59,11 +60,13 @@ class ClienteController extends Controller
             'nome.max' => 'O nome deve conter no máximo 40 caracteres',
             'endereco.min' => 'O endereço deve conter ao menos 3 caracteres!',
             'numerocasa.min' => 'O numero da casa deve conter ao menos 1 caractere!',
+            'cpf' => 'O cpf não é válido!',
+            'uf' => 'A uf não é válida'
         ];
 
-        
-
         $request->validate($rules, $feedback);
+
+        
 
         
         $clientes = new Cliente();
