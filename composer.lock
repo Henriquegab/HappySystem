@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb480a5fe9fa1648b2c6f4a602de3558",
+    "content-hash": "7ef777993fe1765b3a37b917fd048ad7",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1480,6 +1480,57 @@
                 "source": "https://github.com/laravel/ui/tree/v3.3.2"
             },
             "time": "2021-11-05T08:25:44+00:00"
+        },
+        {
+            "name": "laravellegends/pt-br-validator",
+            "version": "8.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelLegends/pt-br-validator.git",
+                "reference": "19fc447c26b30254a3879eca70c757bf0d61982a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelLegends/pt-br-validator/zipball/19fc447c26b30254a3879eca70c757bf0d61982a",
+                "reference": "19fc447c26b30254a3879eca70c757bf0d61982a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
+                "phpunit/phpunit": "^8.3 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelLegends\\PtBrValidator\\ValidatorProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelLegends\\PtBrValidator\\": "src/pt-br-validator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wallace de Souza Vizerra",
+                    "email": "wallacemaxters@gmail.com"
+                }
+            ],
+            "description": "Uma biblioteca contendo validações de formatos Brasileiros, para o Laravel",
+            "support": {
+                "issues": "https://github.com/LaravelLegends/pt-br-validator/issues",
+                "source": "https://github.com/LaravelLegends/pt-br-validator/tree/8.0.3"
+            },
+            "time": "2021-06-08T13:08:56+00:00"
         },
         {
             "name": "league/commonmark",

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
@@ -34,7 +35,52 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        $rules = [
+            'nome' => 'required|min:3|max:40',
+            'email' => 'email',
+            'cpf' => 'required',
+            'sexo' => 'required',
+            'endereco' => 'required|min:3',
+            'numerocasa' => 'required|min:1',
+            'cep' => 'required',
+            'uf' => 'required',
+
+            
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+            'email' => 'O email deve ser válido!',
+            'nome.min' => 'O nome deve conter no mínimo 3 caracteres',
+            'nome.max' => 'O nome deve conter no máximo 40 caracteres',
+            'endereco.min' => 'O endereço deve conter ao menos 3 caracteres!',
+            'numerocasa.min' => 'O numero da casa deve conter ao menos 1 caractere!',
+        ];
+
+        
+
+        $request->validate($rules, $feedback);
+
+        
+        $clientes = new Cliente();
+        $clientes->nome = $request->get('nome');
+        $clientes->email = $request->get('email');
+        $clientes->cpf = $request->get('cpf');
+        $clientes->sexo = $request->get('sexo');
+        $clientes->endereco = $request->get('endereco');
+        $clientes->numerocasa = $request->get('numerocasa');
+        $clientes->cep = $request->get('cep');
+        $clientes->uf = $request->get('uf');
+
+        
+        $clientes->save();
+        
+        return redirect()->route('home');
+
     }
 
     /**
