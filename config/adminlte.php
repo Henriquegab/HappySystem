@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Happy</b>System',
+    'logo_img' => 'img/sun_logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'AdminLT',
 
     /*
     |--------------------------------------------------------------------------
@@ -239,7 +239,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'pesquisar',
         ],
         [
             'text' => 'blog',
@@ -254,31 +254,27 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Cadastro de Clientes',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-fw fa-user',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    'route'         => 'clientes.create',
+                    'icon'        => 'far fa-fw fa-user',
+                    
                 ],
                 [
                     'text'        => 'Listagem de Clientes',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-fw fa-user',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    'url'         => 'clientes.show',
+                    'icon'        => 'far fa-fw fa-user',
+                    
                 ],
                 [
                     'text'        => 'Atualizar Cliente',
                     'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-fw fa-user',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    'icon'        => 'far fa-fw fa-user',
+                    
                 ],
                 [
                     'text'        => 'Excluir Cliente',
                     'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-fw fa-user',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    'icon'        => 'far fa-fw fa-user',
+                    
                 ],
 
             ]
@@ -294,29 +290,25 @@ return [
                     'text'        => 'Cadastro de Produtos',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
                 [
                     'text'        => 'Listagem de Produtos',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
                 [
                     'text'        => 'Atualizar Produto',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
                 [
                     'text'        => 'Excluir Produto',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
 
             ]
@@ -332,22 +324,19 @@ return [
                     'text'        => 'Cadastro de Pedidos',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
                 [
                     'text'        => 'Listagem de Pedidos',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
                 [
                     'text'        => 'Atualizar Pedido',
                     'url'         => 'admin/settings',
                     'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
+                    
                 ],
                 [
                     'text'        => 'Excluir Pedido',
@@ -360,20 +349,20 @@ return [
             ]
         ],
        
-        ['header' => 'account_settings'],
+        ['header' => 'CONFIGURAÇÕES DA CONTA'],
         
         [
-            'text' => 'profile',
+            'text' => 'Perfil',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Mudar Senha',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Multinível',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -410,19 +399,19 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'RÓTULOS'],
         [
-            'text'       => 'important',
+            'text'       => 'Importante',
             'icon_color' => 'red',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Alerta',
             'icon_color' => 'yellow',
             'url'        => '#',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'Informação',
             'icon_color' => 'cyan',
             'url'        => '#',
         ],

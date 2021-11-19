@@ -1,0 +1,55 @@
+@extends('adminlte::page')
+
+@section('title', 'Cadastro de Clientes')
+
+@section('content_header')
+    <h1>Cadastro de Clientes</h1>
+@stop
+
+@section('content')
+    
+            {{-- Minimal --}}
+        <div class="row">
+            <x-adminlte-input name="nome" type="name" placeholder="Henrique gabriel" fgroup-class="col-md-5" label="Nome"/>
+
+            {{-- Email type --}}
+            
+            <x-adminlte-input name="email" type="email" placeholder="mail@example.com" fgroup-class="col-md-5" label="Email"/>
+
+            {{-- With label, invalid feedback disabled and form group class --}}
+            
+                <x-adminlte-input name="cpf" type="number" label="CPF" placeholder="11111111111"
+                    fgroup-class="col-md-2" disable-feedback/>
+        </div>
+        <div class="row">
+            <x-adminlte-select label="Sexo" name="sexo" fgroup-class="col-md-3">
+                <x-adminlte-options :options="['Masculino', 'Feminino', 'Outros']"
+                    empty-option="Selecione uma opção"/>
+            </x-adminlte-select>
+        
+            <x-adminlte-input name="endereco" type="name" placeholder="Rua Joaquim Costa" fgroup-class="col-md-4" label="Endereço"/>
+
+            <x-adminlte-input name="numerocasa" type="number" label="Número" placeholder="2"
+                    fgroup-class="col-md-1" disable-feedback/>
+
+            <x-adminlte-input name="CEP" type="number" label="CEP" placeholder="39402000"
+            fgroup-class="col-md-2" disable-feedback/>
+        </div>
+        
+        
+            <x-adminlte-button class="btn-flat" type="submit" label="Cadastrar" theme="success" icon="fas fa-lg fa-save"/>
+        
+        
+
+
+
+
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
