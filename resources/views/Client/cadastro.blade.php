@@ -21,8 +21,8 @@
 
             {{-- With label, invalid feedback disabled and form group class --}}
             
-                <x-adminlte-input name="cpf" type="number" label="CPF" placeholder="11111111111"
-                    fgroup-class="col-md-2" disable-feedback/>
+                <x-adminlte-input name="cpf" type="name" label="CPF" placeholder="11111111111"
+                    fgroup-class="col-md-2"/>
         </div>
         <div class="row">
             <x-adminlte-select label="Sexo" name="sexo" fgroup-class="col-md-3">
@@ -33,10 +33,10 @@
             <x-adminlte-input name="endereco" type="name" placeholder="Rua Joaquim Costa" fgroup-class="col-md-4" label="Endereço"/>
 
             <x-adminlte-input name="numerocasa" type="name" label="Número" placeholder="2"
-                    fgroup-class="col-md-1" disable-feedback/>
+                    fgroup-class="col-md-1"/>
 
             <x-adminlte-input name="cep" type="name" label="CEP" placeholder="39402000"
-            fgroup-class="col-md-2" disable-feedback/>
+            fgroup-class="col-md-2" />
 
             <x-adminlte-input name="uf" type="name" placeholder="MG" fgroup-class="col-md-2" label="UF"/>
         </div>

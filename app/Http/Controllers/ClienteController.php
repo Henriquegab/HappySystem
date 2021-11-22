@@ -27,6 +27,9 @@ class ClienteController extends Controller
         return view('Client.cadastro');
     }
 
+    
+     
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,13 +37,13 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         
 
         $rules = [
             'nome' => 'required|min:3|max:40',
-            'email' => 'email',
-            'cpf' => 'required|cpf',
+            'email' => 'email|unique:clientes,email',
+            'cpf' => 'cpf|unique:clientes,cpf',
             'sexo' => 'required',
             'endereco' => 'required|min:3',
             'numerocasa' => 'required|min:1',
@@ -56,6 +59,7 @@ class ClienteController extends Controller
 
             'required' => 'O campo :attribute deve ser preenchido',
             'email' => 'O email deve ser válido!',
+            'unique' => 'O campo :attribute já existe',
             'nome.min' => 'O nome deve conter no mínimo 3 caracteres',
             'nome.max' => 'O nome deve conter no máximo 40 caracteres',
             'endereco.min' => 'O endereço deve conter ao menos 3 caracteres!',
@@ -63,6 +67,8 @@ class ClienteController extends Controller
             'cpf' => 'O cpf não é válido!',
             'uf' => 'A uf não é válida'
         ];
+
+
 
         $request->validate($rules, $feedback);
 
