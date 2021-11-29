@@ -22,7 +22,8 @@ class ClienteController extends Controller
             ->where('endereco', 'like', '%'.$request->input('endereco').'%')
             ->where('numerocasa', 'like', '%'.$request->input('numerocasa').'%')
             ->where('cep', 'like', '%'.$request->input('cep').'%')
-            ->Paginate(5);
+            ->where('sexo', 'like', '%'.$request->input('sexo').'%')
+            ->Paginate(10);
        
         return view('Client.index', ['clientes' => $clientes, 'request' => $request->all()]);
     }
@@ -121,21 +122,57 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
-        //
+        
+        return view('Client.editar', ['cliente' => $cliente]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        //
+        $rules = [
+            'nome' => 'required|min:3|max:40',
+            'email' => 'email|unique:clientes,email,' .$cliente->id,
+            'endereco' => 'required|min:3',
+            'numerocasa' => 'required|min:1',
+            'cep' => 'required',
+            'uf' => 'required|uf',
+
+
+            
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+            'email' => 'O email deve ser válido!',
+            'unique' => 'O campo :attribute já existe',
+            'nome.min' => 'O nome deve conter no mínimo 3 caracteres',
+            'nome.max' => 'O nome deve conter no máximo 40 caracteres',
+            'endereco.min' => 'O endereço deve conter ao menos 3 caracteres!',
+            'numerocasa.min' => 'O numero da casa deve conter ao menos 1 caractere!',
+            'formato_cpf' => 'O cpf não está com o formato certo!',
+            'uf' => 'A uf não é válida'
+        ];
+
+
+
+        $request->validate($rules, $feedback);
+
+        
+
+        
+        $cliente->update($request->all());
+        
+        return redirect()->route('home');
     }
 
     /**
@@ -144,8 +181,13 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cliente $cliente)
     {
-        //
+        
+       
+        $cliente->delete();
+
+        
+        return redirect()->route('home');
     }
 }

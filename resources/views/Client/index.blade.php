@@ -1,74 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Menu')
+@section('title', 'Listagem de Clientes')
 
 @section('content_header')
-    <h1>Menu Principal</h1>
+    <h1>Listagem de Clientes</h1>
 @stop
 
 @section('content')
     
-<?php /*
-
-        <div class="">
-
-
-            <div class="menu">
-                <ul>
-                    <li><a href="{{route('clientes.create')}}">Novo</a></li>
-                    
-                </ul>
-            </div>
-
-            <div class="informacao-pagina">
-                <div style="width: 90%; margin-left: auto; margin-right: auto;">
-                    <table border="1" width="100%">
-                        <thead>
-                            <tr>    
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>CPF</th>
-                                <th>UF</th>
-                                <th>Endereço</th>
-                                <th>Número</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            @foreach ($clientes as $cliente)
-                                <tr>    
-                                    <td>{{$cliente->nome}}</td>
-                                    <td>{{$cliente->email}}</td>
-                                    <td>{{$cliente->cpf}}</td>
-                                    <td>{{$cliente->uf}}</td>
-                                    <td>{{$cliente->endereco}}</td>
-                                    <td>{{$cliente->numerocasa}}</td>
-                                    <td><a href="{{route('clientes.destroy', $cliente->id)}}"> Excluir</a></td>
-                                    <td><a href="{{route('clientes.edit', $cliente->id)}}">Editar</a></td>
-                                </tr>
-                                
-                            @endforeach
-                        </tbody>
-                
-                        
-                    </table>
-                        {{ $clientes->appends($request)->links() }}
-
-                        <br>
-
-                    
-                        <br>
-                        <br>
-                    
-                        
-                </div>
-            </div>
-        </div>
-
-*/
-?>
+            
 
 
 
@@ -77,6 +17,7 @@
             
             ['label' => 'Nome', 'width' => 20],
             ['label' => 'Email', 'width' => 20],
+            ['label' => 'sexo', 'no-export' => true, 'width' => 5],
             ['label' => 'CPF', 'no-export' => true, 'width' => 5],
             ['label' => 'UF', 'no-export' => true, 'width' => 2],
             ['label' => 'Endereço', 'no-export' => true, 'width' => 15],
@@ -101,7 +42,7 @@
 
 
             $config = [
-            
+            'paging' => 10,
             'order' => [[1, 'asc']],
             'columns' => [null, null, null, ['orderable' => false]],
         ];
@@ -114,22 +55,53 @@
                 <tr>
                     <td>{{$cliente->nome}}</td>
                     <td>{{$cliente->email}}</td>
-                    <td>{{$cliente->cpf}}</td>
+                    <td>{{$cliente->sexo}}</td>
+                    <td>{{$cliente->cpf}} </td>
                     <td>{{$cliente->uf}}</td>
                     <td>{{$cliente->endereco}}</td>
                     <td>{{$cliente->numerocasa}}</td>
                     <td>{{$cliente->cep}}</td>
                     <td>
+                    
+                    <form action="{{route('clientes.edit', $cliente->id)}}">
+                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
+                            <i class="fa fa-lg fa-fw fa-pen"></i>
+                        </button>
+                    </form>
+                    
+                    <?php /*action="{{route('clientes.destroy', $cliente->id)}}"*/ ?>
+
+                    
+                    
+                    
+
+                    
+                    <form method="post" action="{{route('clientes.destroy', $cliente->id)}}">
+
+
+                        <x-adminlte-modal id="{{ 'ctz'.$cliente->id }}" title="Confirmar Exclusão" size="lg" theme="teal"
+                            icon="fas fa-bell" v-centered static-backdrop scrollable >
+                            <div style="height:50px;">Você tem Certeza que deseja excluir este usuário?</div>
+                            <x-slot name="footerSlot">
+                                <x-adminlte-button class="mr-auto" type="submit"  theme="success" label="Sim"/>
+                                
+                                
+                                <x-adminlte-button theme="danger" label="Não" data-dismiss="modal"/>
+                                @csrf
+                            </x-slot>
+                        </x-adminlte-modal>
+
+                       
+
                         
-                    <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar">
-                        <i class="fa fa-lg fa-fw fa-pen"></i>
-                    </button>
-                
-                    <button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Deletar">
+                        @method('DELETE')
+                        
+                        
+                    </form>
+                    
+                    <button class="btn btn-xs btn-default text-danger mx-1 shadow"  data-toggle="modal" data-target="{{ '#ctz'.$cliente->id }}" title="Deletar">
                         <i class="fa fa-lg fa-fw fa-trash"></i>
                     </button>
-                
-                    
                 
                     </td>
                 </tr>

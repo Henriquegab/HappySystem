@@ -264,18 +264,7 @@ return [
                     'icon'        => 'far fa-fw fa-user',
                     
                 ],
-                [
-                    'text'        => 'Atualizar Cliente',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'far fa-fw fa-user',
-                    
-                ],
-                [
-                    'text'        => 'Excluir Cliente',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'far fa-fw fa-user',
-                    
-                ],
+                
 
             ]
         ],
