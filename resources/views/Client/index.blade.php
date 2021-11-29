@@ -17,7 +17,7 @@
             
             ['label' => 'Nome', 'width' => 20],
             ['label' => 'Email', 'width' => 20],
-            ['label' => 'sexo', 'no-export' => true, 'width' => 5],
+            ['label' => 'Sexo', 'no-export' => true, 'width' => 5],
             ['label' => 'CPF', 'no-export' => true, 'width' => 5],
             ['label' => 'UF', 'no-export' => true, 'width' => 2],
             ['label' => 'Endereço', 'no-export' => true, 'width' => 15],
@@ -53,9 +53,23 @@
         <x-adminlte-datatable id="table2" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable>
             @foreach($clientes as $cliente)
                 <tr>
+                    <?php
+                        $sexo = $cliente->sexo;
+                        if ($sexo == 0) {
+                            $sexo = 'Masculino';
+                        }
+                        else {
+                            if ($sexo == 1) {
+                            $sexo = 'Feminino';
+                        }
+                            else {
+                                $sexo = 'outros';
+                            }
+                        }
+                    ?>
                     <td>{{$cliente->nome}}</td>
                     <td>{{$cliente->email}}</td>
-                    <td>{{$cliente->sexo}}</td>
+                    <td>{{$sexo}}</td>
                     <td>{{$cliente->cpf}} </td>
                     <td>{{$cliente->uf}}</td>
                     <td>{{$cliente->endereco}}</td>
