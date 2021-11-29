@@ -61,12 +61,13 @@ class ClienteController extends Controller
             'endereco.min' => 'O endereço deve conter ao menos 3 caracteres!',
             'numerocasa.min' => 'O numero da casa deve conter ao menos 1 caractere!',
             'cpf' => 'O cpf não é válido!',
+            'formato_cpf' => 'O cpf não está com o formato certo!',
             'uf' => 'A uf não é válida'
         ];
 
         $request->validate($rules, $feedback);
 
-        
+        //dd($request);
 
         
         $clientes = new Cliente();
