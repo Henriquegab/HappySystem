@@ -278,27 +278,16 @@ return [
                 [
                     'text'        => 'Cadastro de Produtos',
                     'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
+                    'icon'        => 'fas fa-shopping-bag',
                     
                 ],
                 [
                     'text'        => 'Listagem de Produtos',
                     'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
+                    'icon'        => 'fas fa-shopping-bag',
                     
                 ],
-                [
-                    'text'        => 'Atualizar Produto',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
-                    
-                ],
-                [
-                    'text'        => 'Excluir Produto',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
-                    
-                ],
+                
 
             ]
         ],
@@ -307,33 +296,22 @@ return [
 
         [
             'text'    => 'Pedidos',
-            'icon'    => 'fas fa-shopping-basket',
+            'icon'    => 'fas fa-shopping-cart',
             'submenu' => [
                 [
                     'text'        => 'Cadastro de Pedidos',
                     'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
+                    'icon'        => 'fas fa-cart-plus',
                     
                 ],
                 [
                     'text'        => 'Listagem de Pedidos',
                     'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
+                    'icon'        => 'fas fa-cart-arrow-down',
                     
-                ],
-                [
-                    'text'        => 'Atualizar Pedido',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
-                    
-                ],
-                [
-                    'text'        => 'Excluir Pedido',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-shopping-basket',
-                    'label'       => 4,
-                    'label_color' => 'success',
-                ],
+                ]
+               
+                
 
             ]
         ],
@@ -350,60 +328,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text'    => 'Multinível',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'RÓTULOS'],
-        [
-            'text'       => 'Importante',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'Alerta',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'Informação',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        
     ],
 
     /*
