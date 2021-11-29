@@ -12,9 +12,19 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $clientes = Cliente::where('nome', 'like', '%'.$request->input('nome').'%')
+            
+            ->where('cpf', 'like', '%'.$request->input('cpf').'%')
+            ->where('uf', 'like', '%'.$request->input('uf').'%')
+            ->where('email', 'like', '%'.$request->input('email').'%')
+            ->where('endereco', 'like', '%'.$request->input('endereco').'%')
+            ->where('numerocasa', 'like', '%'.$request->input('numerocasa').'%')
+            ->where('cep', 'like', '%'.$request->input('cep').'%')
+            ->Paginate(5);
+       
+        return view('Client.index', ['clientes' => $clientes, 'request' => $request->all()]);
     }
 
     /**
@@ -101,7 +111,8 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        //
+        
+
     }
 
     /**

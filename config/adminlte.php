@@ -260,7 +260,7 @@ return [
                 ],
                 [
                     'text'        => 'Listagem de Clientes',
-                    'url'         => 'clientes.show',
+                    'route'         => 'clientes.index',
                     'icon'        => 'far fa-fw fa-user',
                     
                 ],
