@@ -93,7 +93,7 @@
                     <form method="post" action="{{route('clientes.destroy', $cliente->id)}}">
 
 
-                        <x-adminlte-modal id="{{ 'ctz'.$cliente->id }}" title="Confirmar Exclusão" size="lg" theme="teal"
+                        <x-adminlte-modal id="{{ 'ctz'.$cliente->id }}" title="Confirmar Exclusão" size="md" theme="warning"
                             icon="fas fa-bell" v-centered static-backdrop scrollable >
                             <div style="height:50px;">Você tem Certeza que deseja excluir este usuário?</div>
                             <x-slot name="footerSlot">
