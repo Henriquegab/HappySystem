@@ -19,7 +19,7 @@
             ['label' => 'Email', 'width' => 20],
             ['label' => 'Sexo', 'no-export' => true, 'width' => 5],
             ['label' => 'CPF', 'no-export' => true, 'width' => 5],
-            ['label' => 'UF', 'no-export' => true, 'width' => 2],
+            ['label' => 'UF', 'no-export' => true,  'width' => 2],
             ['label' => 'Endereço', 'no-export' => true, 'width' => 15],
             ['label' => 'Número', 'no-export' => true, 'width' => 5],
             ['label' => 'CEP', 'no-export' => true, 'width' => 10],
@@ -42,15 +42,17 @@
 
 
             $config = [
-            'paging' => true,
+            'paging' => false,
+            
+            'ordering' => true,
             'order' => [[1, 'asc']],
-            'columns' => [['orderable' => true, 'filtrable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true]],
+            //'columns' => ['orderable'=> true, 'targets' => 0, null, null, null, null, null, null, null, null]
         ];
         
         @endphp
 
         {{-- Minimal example / fill data using the component slot --}}
-        <x-adminlte-datatable id="table6" :heads="$heads" head-theme="light" :config="$config" theme="light" striped hoverable with-buttons>
+        <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
             @foreach($clientes as $cliente)
                 <tr>
                     <?php
@@ -94,10 +96,10 @@
 
 
                         <x-adminlte-modal id="{{ 'ctz'.$cliente->id }}" title="Confirmar Exclusão" size="md" theme="warning"
-                            icon="fas fa-bell" v-centered static-backdrop scrollable >
+                            icon="fas fa-exclamation-circle" v-centered static-backdrop >
                             <div style="height:50px;">Você tem Certeza que deseja excluir este usuário?</div>
                             <x-slot name="footerSlot">
-                                <x-adminlte-button class="mr-auto" type="submit"  theme="success" label="Sim"/>
+                                <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim"/>
                                 
                                 
                                 <x-adminlte-button theme="danger" label="Não" data-dismiss="modal"/>
@@ -127,7 +129,7 @@
        
         
         <br>
-        {{ $clientes->links() }} {{ $clientes->count() }}
+        {{ $clientes->links() }}
         <br>
 
 
