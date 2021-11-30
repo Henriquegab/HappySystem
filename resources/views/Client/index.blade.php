@@ -44,7 +44,7 @@
             $config = [
             'paging' => 10,
             'order' => [[1, 'asc']],
-            'columns' => [null, null, null, ['orderable' => false]],
+            'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true]],
         ];
         
         @endphp
