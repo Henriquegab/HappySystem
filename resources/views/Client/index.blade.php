@@ -42,15 +42,15 @@
 
 
             $config = [
-            'paging' => 10,
+            'paging' => true,
             'order' => [[1, 'asc']],
-            'columns' => [['orderable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true]],
+            'columns' => [['orderable' => true, 'filtrable' => true], ['orderable' => true], ['orderable' => true], ['orderable' => true]],
         ];
         
         @endphp
 
         {{-- Minimal example / fill data using the component slot --}}
-        <x-adminlte-datatable id="table2" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable>
+        <x-adminlte-datatable id="table6" :heads="$heads" head-theme="light" :config="$config" theme="light" striped hoverable with-buttons>
             @foreach($clientes as $cliente)
                 <tr>
                     <?php
@@ -63,7 +63,7 @@
                             $sexo = 'Feminino';
                         }
                             else {
-                                $sexo = 'outros';
+                                $sexo = 'Outros';
                             }
                         }
                     ?>
@@ -83,7 +83,7 @@
                         </button>
                     </form>
                     
-                    <?php /*action="{{route('clientes.destroy', $cliente->id)}}"*/ ?>
+                    
 
                     
                     
@@ -120,8 +120,15 @@
                     </td>
                 </tr>
             @endforeach
+           
         </x-adminlte-datatable>
-
+        
+        
+       
+        
+        <br>
+        {{ $clientes->links() }} {{ $clientes->count() }}
+        <br>
 
 
 
