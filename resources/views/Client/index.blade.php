@@ -3,7 +3,7 @@
 @section('title', 'Listagem de Clientes')
 
 @section('content_header')
-    <h1>Listagem de Clientes</h1>
+    <h1 align="center">Listagem de Clientes</h1>
 @stop
 
 @section('content')
@@ -17,8 +17,8 @@
             
             ['label' => 'Nome', 'width' => 20],
             ['label' => 'Email', 'width' => 20],
-            ['label' => 'Sexo', 'no-export' => true, 'width' => 5],
-            ['label' => 'CPF', 'no-export' => true, 'width' => 5],
+            ['label' => 'Sexo',  'width' => 5],
+            ['label' => 'CPF',  'width' => 5],
             ['label' => 'UF', 'no-export' => true,  'width' => 2],
             ['label' => 'Endereço', 'no-export' => true, 'width' => 15],
             ['label' => 'Número', 'no-export' => true, 'width' => 5],

@@ -3,11 +3,11 @@
 @section('title', 'Menu')
 
 @section('content_header')
-    <h1>Menu Principal</h1>
+    <h1 align="center">Menu Principal</h1>
 @stop
 
 @section('content')
-    <p>Seja Bem-vindo!</p>
+    <p align="center">Seja Bem-vindo!</p>
 @stop
 
 @section('css')
