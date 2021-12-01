@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Listagem de Clientes')
+@section('title', 'Listagem de Produtos')
 
 @section('content_header')
-    <h1 align="center">Listagem de Clientes</h1>
+    <h1 align="center">Listagem de Produtos</h1>
 @stop
 
 @section('content')
@@ -17,14 +17,11 @@
 
             ['label' => 'Id', 'width' => 20],
             ['label' => 'Nome', 'width' => 20],
-            ['label' => 'Email', 'width' => 20],
-            ['label' => 'Sexo',  'width' => 5],
-            ['label' => 'CPF',  'width' => 5],
-            ['label' => 'UF', 'no-export' => true,  'width' => 2],
-            ['label' => 'Endereço', 'no-export' => true, 'width' => 15],
-            ['label' => 'Número', 'no-export' => true, 'width' => 5],
-            ['label' => 'CEP', 'no-export' => true, 'width' => 10],
-            ['label' => 'Ações', 'no-export' => true, 'width' => 5],
+            ['label' => 'Marca', 'width' => 20],
+            ['label' => 'Descrição',  'width' => 40],
+            ['label' => 'Preço',  'width' => 5],
+            ['label' => 'Estoque', 'no-export' => true,  'width' => 2],
+            ['label' => 'Ações', 'no-export' => true, 'width' => 5]
         ];
 
         $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
@@ -60,34 +57,18 @@
 
         {{-- Minimal example / fill data using the component slot --}}
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
-            @foreach($clientes as $cliente)
+            @foreach($produtos as $produto)
                 <tr>
-                    <?php
-                        $sexo = $cliente->sexo;
-                        if ($sexo == 0) {
-                            $sexo = 'Masculino';
-                        }
-                        else {
-                            if ($sexo == 1) {
-                            $sexo = 'Feminino';
-                        }
-                            else {
-                                $sexo = 'Outros';
-                            }
-                        }
-                    ?>
-                    <td>{{$cliente->id}}</td>
-                    <td>{{$cliente->nome}}</td>
-                    <td>{{$cliente->email}}</td>
-                    <td>{{$sexo}}</td>
-                    <td>{{$cliente->cpf}} </td>
-                    <td>{{$cliente->uf}}</td>
-                    <td>{{$cliente->endereco}}</td>
-                    <td>{{$cliente->numerocasa}}</td>
-                    <td>{{$cliente->cep}}</td>
+                    
+                    <td>{{$produto->id}}</td>
+                    <td>{{$produto->nome}}</td>
+                    <td>{{$produto->marca}}</td>
+                    <td>{{$produto->descricao}} </td>
+                    <td>{{$produto->preco}}</td>
+                    <td>{{$produto->estoque}}</td>
                     <td>
                     
-                    <form action="{{route('clientes.edit', $cliente->id)}}">
+                    <form action="{{route('produtos.edit', $produto->id)}}">
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
                             <i class="fa fa-lg fa-fw fa-pen"></i>
                         </button>
@@ -100,12 +81,12 @@
                     
 
                     
-                    <form method="post" action="{{route('clientes.destroy', $cliente->id)}}">
+                    <form method="post" action="{{route('produtos.destroy', $produto->id)}}">
 
 
-                        <x-adminlte-modal id="{{ 'ctz'.$cliente->id }}" title="Confirmar Exclusão" size="md" theme="warning"
+                        <x-adminlte-modal id="{{ 'ctz'.$produto->id }}" title="Confirmar Exclusão" size="md" theme="warning"
                             icon="fas fa-exclamation-circle" v-centered static-backdrop >
-                            <div style="height:50px;">Você tem Certeza que deseja excluir este usuário?</div>
+                            <div style="height:50px;">Você tem Certeza que deseja excluir este produto?</div>
                             <x-slot name="footerSlot">
                                 <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim"/>
                                 
@@ -123,7 +104,7 @@
                         
                     </form>
                     
-                    <button class="btn btn-xs btn-default text-danger mx-1 shadow"  data-toggle="modal" data-target="{{ '#ctz'.$cliente->id }}" title="Deletar">
+                    <button class="btn btn-xs btn-default text-danger mx-1 shadow"  data-toggle="modal" data-target="{{ '#ctz'.$produto->id }}" title="Deletar">
                         <i class="fa fa-lg fa-fw fa-trash"></i>
                     </button>
                 
@@ -137,7 +118,7 @@
        
         
         <br>
-        {{ $clientes->links() }}
+        {{ $produtos->links() }}
         <br>
 
 

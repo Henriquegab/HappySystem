@@ -277,13 +277,13 @@ return [
             'submenu' => [
                 [
                     'text'        => 'Cadastro de Produtos',
-                    'url'         => 'admin/settings',
+                    'route'       => 'produtos.create',
                     'icon'        => 'fas fa-shopping-bag',
                     
                 ],
                 [
                     'text'        => 'Listagem de Produtos',
-                    'url'         => 'admin/settings',
+                    'route'       => 'produtos.index',
                     'icon'        => 'fas fa-shopping-bag',
                     
                 ],
