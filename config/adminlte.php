@@ -1,4 +1,10 @@
+
+
 <?php
+use App\Models\Cliente;
+
+$clientes = new Cliente;
+dd($clientes);
 
 return [
 
@@ -262,6 +268,8 @@ return [
                     'text'        => 'Listagem de Clientes',
                     'route'         => 'clientes.index',
                     'icon'        => 'far fa-fw fa-user',
+                    'label'       => 4,
+                    'label_color' => 'success',
                     
                 ],
                 
