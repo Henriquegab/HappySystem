@@ -49,11 +49,13 @@
             'order' => [[0, 'asc']],
            // 'columns' => ['orderable'=> true]
         ];
-
-
-
-        
-
+                $cont = 1;
+ 
+                if ($clientes->currentPage() != 1) {
+                    $cont = 30 * ($clientes->currentPage() - 1);
+                }
+                
+                
 
         
         @endphp
@@ -75,8 +77,13 @@
                                 $sexo = 'Outros';
                             }
                         }
+
+                        $id = (($clientes->total() + $cont) - $clientes->total());
+                        $cont++;
+                        
+
                     ?>
-                    <td>{{$cliente->id}}</td>
+                    <td>{{$id}}</td>
                     <td>{{$cliente->nome}}</td>
                     <td>{{$cliente->email}}</td>
                     <td>{{$sexo}}</td>

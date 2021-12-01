@@ -9,7 +9,7 @@
 @section('content')
 
 
-    <form method="post" action="{{ route('produtos.update', 'produto' => $produto) }}">
+    <form method="post" action="{{ route('produtos.update', ['produto' => $produto]) }}">
          @csrf
          @method('PUT')
             {{-- Minimal --}}

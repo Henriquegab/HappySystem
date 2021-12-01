@@ -25,6 +25,12 @@ class ClienteController extends Controller
             ->where('sexo', 'like', '%'.$request->input('sexo').'%')
             ->Paginate(30);
        
+
+
+       
+
+
+
         return view('Client.index', ['clientes' => $clientes, 'request' => $request->all()]);
     }
 
