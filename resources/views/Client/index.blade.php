@@ -49,18 +49,18 @@
             'order' => [[0, 'asc']],
            // 'columns' => ['orderable'=> true]
         ];
-                $cont = 1;
+             /*   $cont = 1;
  
                 if ($clientes->currentPage() != 1) {
                     $cont = 30 * ($clientes->currentPage() - 1);
                 }
                 
-                
+                */
 
         
         @endphp
 
-        {{-- Minimal example / fill data using the component slot --}}
+        
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
             @foreach($clientes as $cliente)
                 <tr>
@@ -77,13 +77,13 @@
                                 $sexo = 'Outros';
                             }
                         }
-
+/*
                         $id = (($clientes->total() + $cont) - $clientes->total());
                         $cont++;
-                        
+ */                       
 
                     ?>
-                    <td>{{$id}}</td>
+                    <td>{{$cliente->id}}</td>
                     <td>{{$cliente->nome}}</td>
                     <td>{{$cliente->email}}</td>
                     <td>{{$sexo}}</td>
@@ -144,9 +144,9 @@
        
         
         <br>
-        {{ $clientes->links() }}
+        {{ $clientes->appends($request)->links() }}
         <br>
-
+        
 
 
 

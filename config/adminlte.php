@@ -4,7 +4,7 @@
 use App\Models\Cliente;
 
 $clientes = new Cliente;
-dd($clientes);
+
 
 return [
 

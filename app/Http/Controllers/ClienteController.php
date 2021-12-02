@@ -23,7 +23,8 @@ class ClienteController extends Controller
             ->where('numerocasa', 'like', '%'.$request->input('numerocasa').'%')
             ->where('cep', 'like', '%'.$request->input('cep').'%')
             ->where('sexo', 'like', '%'.$request->input('sexo').'%')
-            ->Paginate(30);
+            ->orderby('nome', 'asc')
+            ->Paginate(30)->withQueryString();
        
 
 
