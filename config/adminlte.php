@@ -1,9 +1,8 @@
 
 
 <?php
-use App\Models\Cliente;
 
-$clientes = new Cliente;
+
 
 
 return [
@@ -231,111 +230,7 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
-
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'pesquisar',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        ['header' => 'GERENCIAMENTO DE CLIENTES'],
-
-        [
-            'text'    => 'Clientes',
-            'icon'    => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text'        => 'Cadastro de Clientes',
-                    'route'         => 'clientes.create',
-                    'icon'        => 'far fa-fw fa-user',
-                    
-                ],
-                [
-                    'text'        => 'Listagem de Clientes',
-                    'route'         => 'clientes.index',
-                    'icon'        => 'far fa-fw fa-user',
-                    'label'       => 4,
-                    'label_color' => 'success',
-                    
-                ],
-                
-
-            ]
-        ],
-
-        ['header' => 'GERENCIAMENTO DE PRODUTOS'],
-
-        [
-            'text'    => 'Produtos',
-            'icon'    => 'fas fa-shopping-basket',
-            'submenu' => [
-                [
-                    'text'        => 'Cadastro de Produtos',
-                    'route'       => 'produtos.create',
-                    'icon'        => 'fas fa-shopping-bag',
-                    
-                ],
-                [
-                    'text'        => 'Listagem de Produtos',
-                    'route'       => 'produtos.index',
-                    'icon'        => 'fas fa-shopping-bag',
-                    
-                ],
-                
-
-            ]
-        ],
-
-        ['header' => 'GERENCIAMENTO DE PEDIDOS'],
-
-        [
-            'text'    => 'Pedidos',
-            'icon'    => 'fas fa-shopping-cart',
-            'submenu' => [
-                [
-                    'text'        => 'Cadastro de Pedidos',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-cart-plus',
-                    
-                ],
-                [
-                    'text'        => 'Listagem de Pedidos',
-                    'url'         => 'admin/settings',
-                    'icon'        => 'fas fa-cart-arrow-down',
-                    
-                ]
-               
-                
-
-            ]
-        ],
-       
-        ['header' => 'CONFIGURAÇÕES DA CONTA'],
         
-        [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Mudar Senha',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
         
     ],
 
