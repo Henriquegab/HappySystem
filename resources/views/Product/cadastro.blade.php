@@ -21,13 +21,14 @@
 
             {{-- With label, invalid feedback disabled and form group class --}}
             
-                <x-adminlte-input enable-old-support name="descricao" type="text" label="Descrição" placeholder="Digite a descrição..."
-                    fgroup-class="col-md-2"/>
+            <x-adminlte-input enable-old-support name="preco" type="number" placeholder="1000" fgroup-class="col-md-2" label="Preço"/>   
         </div>
         <div class="row">
             
-        
-            <x-adminlte-input enable-old-support name="preco" type="number" placeholder="1000" fgroup-class="col-md-4" label="Preço"/>
+            <x-adminlte-input enable-old-support name="descricao" type="text" label="Descrição" placeholder="Digite a descrição..."
+                    fgroup-class="col-md-11"/>
+
+           
 
             <x-adminlte-input enable-old-support name="estoque" type="number" label="Estoque" placeholder="2"
                     fgroup-class="col-md-1"/>

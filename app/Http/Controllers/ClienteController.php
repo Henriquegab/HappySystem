@@ -107,7 +107,7 @@ class ClienteController extends Controller
         
         $clientes->save();
         
-        return redirect()->route('home');
+        return redirect()->route('clientes.index');
 
     }
 
@@ -179,7 +179,7 @@ class ClienteController extends Controller
         
         $cliente->update($request->all());
         
-        return redirect()->route('home');
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -195,6 +195,6 @@ class ClienteController extends Controller
         $cliente->delete();
 
         
-        return redirect()->route('home');
+        return redirect()->route('clientes.index');
     }
 }

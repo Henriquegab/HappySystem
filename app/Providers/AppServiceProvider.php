@@ -106,13 +106,13 @@ class AppServiceProvider extends ServiceProvider
                 'submenu' => [
                     [
                         'text'        => 'Cadastro de Pedidos',
-                        'url'         => 'admin/settings',
+                        'route'       => 'pedidos.create',
                         'icon'        => 'fas fa-cart-plus',
                         
                     ],
                     [
                         'text'        => 'Listagem de Pedidos',
-                        'url'         => 'admin/settings',
+                        'route'       => 'pedidos.index',
                         'icon'        => 'fas fa-cart-arrow-down',
                         
                     ]
