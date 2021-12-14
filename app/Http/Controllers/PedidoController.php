@@ -30,10 +30,7 @@ class PedidoController extends Controller
         return view('Order.cadastro', ['clientes' => $clientes, 'produtos' => $produtos]);
     }
 
-    public function pessoa(Request $request)
-    {
-        $request->get('clientes');
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -43,7 +40,7 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

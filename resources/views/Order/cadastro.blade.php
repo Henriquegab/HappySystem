@@ -4,6 +4,8 @@
 
 @section('content_header')
     <h1 align="center">Cadastro de pedidos</h1>
+   
+   
 @stop
 
 @section('content')
@@ -14,37 +16,62 @@
             {{-- Minimal --}}
         <div class="row">
 
+            @php
+            $optionsc = [];
+           
+                foreach ($clientes as $cliente) {
+                    $optionsc += [$cliente->id => $cliente->nome.' ('.$cliente->cpf.')'];
+                }
+
+                
+            @endphp
+            
             
             <x-adminlte-select2 enable-old-support label="Cliente" name="cliente" fgroup-class="col-md-5">
-                @foreach ($clientes as $cliente)
-                    @if ($loop->first)
-                        <x-adminlte-options
+                <x-adminlte-options
 
                         empty-option="Selecione uma opção"        
-                        :options="$cliente->nome.' ('.$cliente->cpf.')'" 
+                        :options="$optionsc" 
                         
                         />
-                    @endif
-                    @if (!$loop->first)
-                        <x-adminlte-options
-
-                                
-                        :options="$cliente->nome.' ('.$cliente->cpf.')'" 
-                        
-                        />
-                    @endif
-                    
-                    
-                    
-                
-                
-                @endforeach
-
                 
 
                 
             </x-adminlte-select2>
             
+            @php
+            $optionsp = [];
+           
+                foreach ($produtos as $produto) {
+                    $optionsp += [$produto->id => $produto->nome];
+                }
+
+                
+            @endphp
+            
+            <x-adminlte-select2 enable-old-support label="Produto" name="produto" fgroup-class="col-md-5">
+               
+                        <x-adminlte-options
+
+                        empty-option="Selecione uma opção"        
+                        :options="$optionsp" 
+                        
+                        />
+                   
+                    
+                    
+                    
+                
+                
+               
+                
+
+                
+            </x-adminlte-select2>
+            
+
+            <x-adminlte-input enable-old-support name="quantidade" type="number" label="Quantidade" placeholder="2"
+            fgroup-class="col-md-2"/>
            
         </div>
         
@@ -55,8 +82,7 @@
 
            
 
-            <x-adminlte-input enable-old-support name="estoque" type="number" label="Estoque" placeholder="2"
-                    fgroup-class="col-md-1"/>
+           
 
             
         </div>
