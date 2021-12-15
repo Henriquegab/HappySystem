@@ -17,7 +17,7 @@ class CreatePedidosEPedidosProdutos extends Migration
             $table->id();
             $table->unsignedBigInteger('cliente_id');
             $table->timestamps();
-            $table->integer('quantidade');
+            
 
             $table->foreign('cliente_id')->references('id')->on('clientes');
         });
@@ -26,6 +26,7 @@ class CreatePedidosEPedidosProdutos extends Migration
             $table->id();
             $table->unsignedBigInteger('pedido_id');
             $table->unsignedBigInteger('produto_id');
+            $table->integer('quantidade');
             $table->timestamps();
 
             $table->foreign('pedido_id')->references('id')->on('pedidos');

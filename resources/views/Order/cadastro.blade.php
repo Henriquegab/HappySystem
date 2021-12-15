@@ -39,56 +39,13 @@
                 
             </x-adminlte-select2>
             
-            @php
-            $optionsp = [];
-           
-                foreach ($produtos as $produto) {
-                    $optionsp += [$produto->id => $produto->nome];
-                }
-
-                
-            @endphp
-            
-            <x-adminlte-select2 enable-old-support label="Produto" name="produto" fgroup-class="col-md-5">
-               
-                        <x-adminlte-options
-
-                        empty-option="Selecione uma opção"        
-                        :options="$optionsp" 
-                        
-                        />
-                   
-                    
-                    
-                    
-                
-                
-               
-                
-
-                
-            </x-adminlte-select2>
-            
-
-            <x-adminlte-input enable-old-support name="quantidade" type="number" label="Quantidade" placeholder="2"
-            fgroup-class="col-md-2"/>
-           
-        </div>
-        
-        <div class="row">
-            
-            <x-adminlte-input enable-old-support name="descricao" type="text" label="Descrição" placeholder="Digite a descrição..."
-                    fgroup-class="col-md-11"/>
-
-           
-
-           
-
             
         </div>
         
         
-            <x-adminlte-button class="btn-flat" type="submit" label="Cadastrar" theme="success" icon="fas fa-lg fa-save"/>
+        
+        
+            <x-adminlte-button class="btn-flat" type="submit" label="Continuar" theme="success" icon="fas fa-lg fa-save"/>
     </form>
         
 

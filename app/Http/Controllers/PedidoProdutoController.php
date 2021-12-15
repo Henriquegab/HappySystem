@@ -7,7 +7,7 @@ use App\Models\Pedido;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
-class PedidoController extends Controller
+class PedidoProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,14 +24,12 @@ class PedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Pedido $pedido)
     {
-        $clientes = Cliente::all();
         $produtos = Produto::all();
-        return view('Order.cadastro', ['clientes' => $clientes, 'produtos' => $produtos]);
+        $pedido->produtos;
+        return view('Order.cadastroProduto', ['pedido' => $pedido, 'produtos' => $produtos]);
     }
-
-   
 
     /**
      * Store a newly created resource in storage.
@@ -41,15 +39,7 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        /*print_r($request->get('cliente'));
-        dd($request);*/
-
-
-        $pedido = new Pedido();
-        $pedido->cliente_id = $request->get('cliente');
-        $pedido->save();
-
-        return redirect()->route('pedidosProdutos.create');
+        //
     }
 
     /**
