@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Pedido;
+use App\Models\PedidoProduto;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class PedidoProdutoController extends Controller
     public function create(Pedido $pedido)
     {
         $produtos = Produto::all();
-        $pedido->produtos;
+        //$pedido->produtos;
+        dd($pedido->id);
         return view('Order.cadastroProduto', ['pedido' => $pedido, 'produtos' => $produtos]);
     }
 
@@ -37,9 +39,16 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Pedido $pedido)
     {
-        //
+       
+        $pedidoProduto = new PedidoProduto();
+        $pedidoProduto->pedido_id = $pedido->id;
+        $pedidoProduto->produto_id = $request->get('produto');
+        $pedidoProduto->quantidade = $request->get('quantidade');
+        $pedidoProduto->save();
+
+        return redirect()->route('home', ['pedidoProduto' => $pedidoProduto]);
     }
 
     /**

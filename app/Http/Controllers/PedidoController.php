@@ -47,9 +47,10 @@ class PedidoController extends Controller
 
         $pedido = new Pedido();
         $pedido->cliente_id = $request->get('cliente');
+
         $pedido->save();
 
-        return redirect()->route('pedidosProdutos.create');
+        return redirect()->route('pedidosProdutos.create', ['pedido' => $pedido->id]);
     }
 
     /**
