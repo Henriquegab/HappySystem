@@ -25,12 +25,16 @@ class PedidoProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Pedido $pedido)
+    public function create(String $id)
     {
         $produtos = Produto::all();
-        //$pedido->produtos;
-        dd($pedido->id);
-        return view('Order.cadastroProduto', ['pedido' => $pedido, 'produtos' => $produtos]);
+        //$pedido->save();
+        //dd($pedido);
+        //dd($request->get('request'));
+        //dd($id);
+
+       
+        return view('Order.cadastroProduto', ['id' => $id, 'produtos' => $produtos]);
     }
 
     /**
@@ -39,16 +43,20 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Pedido $pedido)
+    public function store(Request $request, String $id, Pedido $pedido)
     {
-       
+        //dd($id);
+        $pedido = new Pedido();
+        $pedido->cliente_id = $id;
+        $pedido->save();
         $pedidoProduto = new PedidoProduto();
         $pedidoProduto->pedido_id = $pedido->id;
+        //dd($pedido);
         $pedidoProduto->produto_id = $request->get('produto');
         $pedidoProduto->quantidade = $request->get('quantidade');
         $pedidoProduto->save();
 
-        return redirect()->route('home', ['pedidoProduto' => $pedidoProduto]);
+        return redirect()->route('home');
     }
 
     /**

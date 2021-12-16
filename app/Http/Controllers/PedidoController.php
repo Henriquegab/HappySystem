@@ -27,8 +27,8 @@ class PedidoController extends Controller
     public function create()
     {
         $clientes = Cliente::all();
-        $produtos = Produto::all();
-        return view('Order.cadastro', ['clientes' => $clientes, 'produtos' => $produtos]);
+        
+        return view('Order.cadastro', ['clientes' => $clientes]);
     }
 
    
@@ -41,16 +41,18 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        /*print_r($request->get('cliente'));
-        dd($request);*/
+        //print_r($request->get('cliente'));
+        //dd($request);
+
+       // $pedido = new Pedido();
+        $id = $request->get('cliente');
+        
+        //$pedido->save();
+        //dd($pedido);
 
 
-        $pedido = new Pedido();
-        $pedido->cliente_id = $request->get('cliente');
-
-        $pedido->save();
-
-        return redirect()->route('pedidosProdutos.create', ['pedido' => $pedido->id]);
+       
+        return redirect()->route('pedido-produto.create', ['id' => $id]);
     }
 
     /**
