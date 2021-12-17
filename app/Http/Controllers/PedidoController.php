@@ -45,6 +45,7 @@ class PedidoController extends Controller
         //dd($request);
 
        // $pedido = new Pedido();
+        $primeiro = intval( $request->get('primeiro'));
         $id = $request->get('cliente');
         
         //$pedido->save();
@@ -52,7 +53,7 @@ class PedidoController extends Controller
 
 
        
-        return redirect()->route('pedido-produto.create', ['id' => $id]);
+        return redirect()->route('pedido-produto.create', ['id' => $id, 'primeiro' => $primeiro]);
     }
 
     /**

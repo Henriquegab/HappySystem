@@ -15,9 +15,9 @@
         @php
         $heads = [
 
-            ['label' => 'Id', 'width' => 20],
+            
             ['label' => 'Produto', 'width' => 20],
-            ['label' => 'Marca', 'width' => 20],
+            
             ['label' => 'Quantidade',  'width' => 40],
             ['label' => 'Preço Unitário',  'width' => 5],
             ['label' => 'Preço', 'no-export' => true,  'width' => 2],

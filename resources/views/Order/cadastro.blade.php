@@ -11,14 +11,15 @@
 @section('content')
 
     
-    <form method="post" action="{{ route('pedidos.store') }}">
-         @csrf
+    <form method="post" action="{{ route('pedidos.store', ['primeiro' => 5]) }}">
+        @csrf
+       
             {{-- Minimal --}}
         <div class="row">
 
             @php
             $optionsc = [];
-           
+        
                 foreach ($clientes as $cliente) {
                     $optionsc += [$cliente->id => $cliente->nome.' ('.$cliente->cpf.')'];
                 }

@@ -26,5 +26,6 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('produtos', ProdutoController::class);
 Route::resource('pedidos', PedidoController::class);
 Route::resource('pedidosProdutos', PedidoProdutoController::class);
-Route::get('pedido-produto/create/{id}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
-Route::post('pedido-produto/store/{id}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
+Route::get('pedido-produto/create/{id?}{primeiro}{pedido?}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+Route::post('pedido-produto/store/{id?}{pedido?}{primeiro}{produtos}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
+Route::get('pedido-produto/show/{pedidoProduto}{primeiro}{produtos}{pedido}', [PedidoProdutoController::class, 'show'])->name('pedido-produto.show');
