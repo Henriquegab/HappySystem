@@ -11,7 +11,7 @@
 @section('content')
 
     
-    <form method="post" action="{{ route('pedido-produto.store', ['id' => $id, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido]) }}">
+    <form method="post" action="{{ route('pedido-produto.store', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedido]) }}">
          @csrf
          
             {{-- Minimal --}}

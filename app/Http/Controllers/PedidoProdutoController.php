@@ -35,7 +35,7 @@ class PedidoProdutoController extends Controller
         //dd($primeiro);
 
        
-        return view('Order.cadastroProduto', ['id' => $id, 'produtos' => $produtos, 'primeiro' => $primeiro, 'pedido' => $pedido]);
+        return view('Order.cadastroProduto', ['id' => $id, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido]);
     }
 
     /**
@@ -44,14 +44,14 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, String $id, Pedido $pedido, int $primeiro, Produto $produtos)
+    public function store(Request $request, String $id, int $primeiro, Pedido $pedido,)
     {
-        dd($id);
+        
         if($primeiro == 5){
             $pedido = new Pedido();
             $pedido->cliente_id = $id;
             $pedido->save();
-            //$primeiro = 2;
+            $primeiro = 0;
 
         }
         
@@ -61,9 +61,9 @@ class PedidoProdutoController extends Controller
         $pedidoProduto->produto_id = $request->get('produto');
         $pedidoProduto->quantidade = $request->get('quantidade');
         $pedidoProduto->save();
-        //dd($pedidoProduto->pedido_id);
+        //dd($pedidoProduto);
 
-        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido]);
+        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido]);
     }
 
     /**
@@ -72,11 +72,12 @@ class PedidoProdutoController extends Controller
      * @param  PedidoProduto  $pedidoProduto
      * @return \Illuminate\Http\Response
      */
-    public function show(PedidoProduto $pedidoProduto, String $primeiro, Produto $produtos, Pedido $pedido)
+    public function show(PedidoProduto $pedidoProduto, String $primeiro, Pedido $pedido)
     {
-        $pedidoProduto = PedidoProduto::where('pedido_id', 'like', '%'.$pedido->id.'%');
-        dd($pedidoProduto);
-        return view('Order.lista', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido]);
+        //$pedidoProduto = PedidoProduto::where('pedido_id', 'pedido->id');
+
+        dd($pedidoProduto->pedido_id);
+        return view('Order.lista', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido]);
     }
 
     /**

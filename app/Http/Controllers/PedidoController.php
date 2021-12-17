@@ -39,15 +39,15 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, int $primeiro)
     {
         //print_r($request->get('cliente'));
         //dd($request);
-
+        //dd($primeiro);
        // $pedido = new Pedido();
-        $primeiro = intval( $request->get('primeiro'));
+        //$primeiro = intval( $request->get('primeiro'));
         $id = $request->get('cliente');
-        
+        //dd($primeiro);
         //$pedido->save();
         //dd($pedido);
 

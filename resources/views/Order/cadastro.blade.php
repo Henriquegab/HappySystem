@@ -10,10 +10,10 @@
 
 @section('content')
 
-    
-    <form method="post" action="{{ route('pedidos.store', ['primeiro' => 5]) }}">
+
+    <form method="post" action="{{ route('pedido.store', ['primeiro' => 5]) }}">
         @csrf
-       
+            
             {{-- Minimal --}}
         <div class="row">
 
