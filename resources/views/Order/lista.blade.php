@@ -67,9 +67,9 @@
                     <td>{{$produto->nome}}</td>
                     <td>{{$produto->marca}}</td>
                     <td>{{$produto->descricao}} </td>
-                    <td>{{'R$ '.$produto->preco.',00'}}</td>
+                    <td>{{'R$ '.number_format($produto->preco, 2)}}</td>
                     <td>{{$quantidades[$produto->id]}}</td>
-                    <td>{{'R$ '.$quantidades[$produto->id] * $produto->preco.',00'}}</td>
+                    <td>{{'R$ '.number_format($quantidades[$produto->id] * $produto->preco, 2)}}</td>
                     <td>
                     
                     <form action="{{route('pedidosProdutos.edit', $produto->id)}}">

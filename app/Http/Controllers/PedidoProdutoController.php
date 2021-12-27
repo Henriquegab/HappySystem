@@ -7,6 +7,7 @@ use App\Models\Pedido;
 use App\Models\PedidoProduto;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PedidoProdutoController extends Controller
 {
@@ -47,6 +48,37 @@ class PedidoProdutoController extends Controller
      */
     public function store(Request $request, String $id, int $primeiro, Pedido $pedido)
     {
+
+        $rules = [
+            'produto' => 'required'| Rule::exists('pedidos_produtos')->where(function ($query)){},
+               
+            
+        
+            'quantidade' => 'email|unique:clientes,email',
+           
+
+
+            
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+            'email' => 'O email deve ser válido!',
+            'unique' => 'O campo :attribute já existe',
+            'nome.min' => 'O nome deve conter no mínimo 3 caracteres',
+            'nome.max' => 'O nome deve conter no máximo 40 caracteres',
+            'endereco.min' => 'O endereço deve conter ao menos 3 caracteres!',
+            'numerocasa.min' => 'O numero da casa deve conter ao menos 1 caractere!',
+            'cpf' => 'O cpf não é válido!',
+            'formato_cpf' => 'O cpf não está com o formato certo!',
+            'uf' => 'A uf não é válida'
+        ];
+
+
+
+        $request->validate($rules, $feedback);
         
 
         if($primeiro == 5){
