@@ -29,4 +29,4 @@ Route::post('pedidos/store/{primeiro}', [PedidoController::class, 'store'])->nam
 Route::resource('pedidosProdutos', PedidoProdutoController::class);
 Route::get('pedido-produto/create/{id?}/{primeiro}/{pedido?}', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
 Route::post('pedido-produto/store/{id?}/{primeiro}/{pedido?}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
-Route::get('pedido-produto/show/{pedidoProduto}/{primeiro}/{pedido}', [PedidoProdutoController::class, 'show'])->name('pedido-produto.show');
+Route::get('pedido-produto/show/{pedidoProduto}/{primeiro}/{pedido}/{id?}', [PedidoProdutoController::class, 'show'])->name('pedido-produto.show');

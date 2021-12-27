@@ -11,7 +11,17 @@
 @section('content')
 
     
-    <form method="post" action="{{ route('pedido-produto.store', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedido]) }}">
+    
+
+    @if (isset($id))
+        <form method="post" action="{{ route('pedido-produto.store', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedido])}}">
+    @else
+        <form method="post" action="{{ route('pedido-produto.store', ['primeiro' => $primeiro, 'pedido' => $pedido])  }}">
+    @endif
+    
+    
+    
+   
          @csrf
          
             {{-- Minimal --}}

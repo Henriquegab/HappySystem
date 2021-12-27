@@ -3,7 +3,7 @@
 @section('title', 'Listagem de Pedidos')
 
 @section('content_header')
-    <h1 align="center">Listagem de Pedidos</h1>
+    <h1 align="center">Listagem do Pedido {{$pedidoProduto->pedido_id}}</h1>
 @stop
 
 @section('content')
@@ -16,11 +16,13 @@
         $heads = [
 
             
+           
             ['label' => 'Produto', 'width' => 20],
-            
-            ['label' => 'Quantidade',  'width' => 40],
+            ['label' => 'Marca',  'width' => 20],
+            ['label' => 'Descrição', 'width' => 40],
             ['label' => 'Preço Unitário',  'width' => 5],
-            ['label' => 'Preço', 'no-export' => true,  'width' => 2],
+            ['label' => 'Quantidade', 'no-export' => true,  'width' => 2],
+            ['label' => 'Preço', 'no-export' => true,  'width' => 10],
             ['label' => 'Ações', 'no-export' => true, 'width' => 5]
         ];
 
@@ -56,32 +58,35 @@
         @endphp
 
         {{-- Minimal example / fill data using the component slot --}}
+        
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
             @foreach($produtos as $produto)
                 <tr>
                     
-                    <td>{{$produto->id}}</td>
+                    
                     <td>{{$produto->nome}}</td>
                     <td>{{$produto->marca}}</td>
                     <td>{{$produto->descricao}} </td>
-                    <td>{{$produto->preco}}</td>
-                    <td>{{$produto->estoque}}</td>
+                    <td>{{'R$ '.$produto->preco.',00'}}</td>
+                    <td>{{$quantidades[$produto->id]}}</td>
+                    <td>{{'R$ '.$quantidades[$produto->id] * $produto->preco.',00'}}</td>
                     <td>
                     
-                    <form action="{{route('produtos.edit', $produto->id)}}">
+                    <form action="{{route('pedidosProdutos.edit', $produto->id)}}">
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
                             <i class="fa fa-lg fa-fw fa-pen"></i>
                         </button>
                     </form>
                     
                     
-
-                    
-                    
                     
 
                     
-                    <form method="post" action="{{route('produtos.destroy', $produto->id)}}">
+                    
+                    
+
+                    
+                    <form method="post" action="{{route('pedidosProdutos.destroy', $produto->id)}}">
 
 
                         <x-adminlte-modal id="{{ 'ctz'.$produto->id }}" title="Confirmar Exclusão" size="md" theme="warning"
@@ -111,14 +116,16 @@
                     </td>
                 </tr>
             @endforeach
-           
+                
         </x-adminlte-datatable>
         
+
+        <x-adminlte-button class="btn-flat" type="button" onclick="window.location='{{ route('pedido-produto.create', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedidoProduto->pedido_id,  ]) }}'" label="Adicionar" theme="success" icon="fas fa-lg fa-save"/>
         
        
         
         <br>
-        {{ $produtos->links() }}
+        
         <br>
 
 
