@@ -41,11 +41,31 @@ class PedidoController extends Controller
      */
     public function store(Request $request, int $primeiro)
     {
-        //print_r($request->get('cliente'));
-        //dd($request);
-        //dd($primeiro);
-       // $pedido = new Pedido();
-        //$primeiro = intval( $request->get('primeiro'));
+       
+        $rules = [
+            'cliente' => 'required'
+               
+            
+        
+            
+           
+
+
+            
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+        
+        ];
+
+
+
+        $request->validate($rules, $feedback);
+        
+
         $id = $request->get('cliente');
         //dd($primeiro);
         //$pedido->save();
