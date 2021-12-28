@@ -60,7 +60,7 @@
         {{-- Minimal example / fill data using the component slot --}}
         
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
-            @foreach($produtos as $produto)
+            @foreach($pedido->produtos as $produto)
                 <tr>
                     
                     
@@ -86,7 +86,7 @@
                     
 
                     
-                    <form method="post" action="{{route('pedidosProdutos.destroy', $produto->id)}}">
+                    <form method="post" action="{{route('pedido-produto.destroy',['pedidoProduto' => $pedidoProduto ,'primeiro' => $primeiro, 'pedido' => $pedido,'produto'=>$produto->id, 'id' => $id] )}}">
 
 
                         <x-adminlte-modal id="{{ 'ctz'.$produto->id }}" title="Confirmar Exclusão" size="md" theme="warning"

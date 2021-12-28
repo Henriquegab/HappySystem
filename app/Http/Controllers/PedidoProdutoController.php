@@ -111,6 +111,9 @@ class PedidoProdutoController extends Controller
         }
         else{
 
+            //refatorável ($valida = $valida->first)
+
+
             $mudar = PedidoProduto::find($valida->get(0)->getAttributes()['id']);
             $mudar->quantidade = $valida->get(0)->getAttributes()['quantidade'] + $request->quantidade;
             $mudar->save();
@@ -146,8 +149,10 @@ class PedidoProdutoController extends Controller
             $quantidades[$pedidoProduto->produto_id] = $pedidoProduto->quantidade;
            
         }
+
         
-        return view('Order.lista', ['quantidades' => $quantidades, 'pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'produtos' => $pedido->produtos, 'id' => $id]);
+        
+        return view('Order.lista', ['quantidades' => $quantidades, 'pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
     }
 
     /**
@@ -179,8 +184,13 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(PedidoProduto $pedidoProduto, String $primeiro, Pedido $pedido, Produto $produto,  String $id)
     {
-        
+      
+        $deletar = PedidoProduto::where('pedido_id', $pedidoProduto->pedido_id)->where('produto_id', $produto->id);
+        $deletar = $deletar->first();
+        $deletar->delete();
+
+        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedidoProduto->pedido_id, 'id' => $id]);
     }
 }
