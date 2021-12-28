@@ -9,6 +9,8 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
+use function PHPUnit\Framework\isEmpty;
+
 class PedidoProdutoController extends Controller
 {
     /**
@@ -49,8 +51,8 @@ class PedidoProdutoController extends Controller
     public function store(Request $request, String $id, int $primeiro, Pedido $pedido)
     {
 
-        $rules = [
-            'produto' => 'required'| Rule::exists('pedidos_produtos')->where(function ($query)){},
+       /* $rules = [
+            'produto' => 'required|'
                
             
         
@@ -80,7 +82,9 @@ class PedidoProdutoController extends Controller
 
         $request->validate($rules, $feedback);
         
-
+*/
+        
+        
         if($primeiro == 5){
             $pedido = new Pedido();
             $pedido->cliente_id = $id;
@@ -90,19 +94,38 @@ class PedidoProdutoController extends Controller
         }
         $primeiro = 0;
         
-        $pedidoProduto = new PedidoProduto();
-        $pedidoProduto->pedido_id = $pedido->id;
-        //dd($pedido);
-        $pedidoProduto->produto_id = $request->get('produto');
-        $pedidoProduto->quantidade = $request->get('quantidade');
-        $pedidoProduto->save();
+        $valida = PedidoProduto::where('pedido_id', $pedido->id)->where('produto_id', $request->produto)->get();
+        
+        
+        if($valida->isEmpty()){
+            
+
+            $pedidoProduto = new PedidoProduto();
+            $pedidoProduto->pedido_id = $pedido->id;
+            //dd($pedido);
+            $pedidoProduto->produto_id = $request->get('produto');
+            $pedidoProduto->quantidade = $request->get('quantidade');
+            $pedidoProduto->save();
+
+            return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
+        }
+        else{
+
+            $mudar = PedidoProduto::find($valida->get(0)->getAttributes()['id']);
+            $mudar->quantidade = $valida->get(0)->getAttributes()['quantidade'] + $request->quantidade;
+            $mudar->save();
+
+            return redirect()->route('pedido-produto.show', ['pedidoProduto' => $mudar, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
+           
+        }
+        
 
         //$pedidoProduto = PedidoProduto::Where('pedido_id', $pedido->id);
 
 
         //dd($pedidoProduto);
 
-        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
+       
     }
 
     /**
@@ -147,7 +170,7 @@ class PedidoProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -156,8 +179,8 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        
     }
 }
