@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\Estoque;
+use App\Listeners\AtualizarEstoque;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +30,13 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Event::listen(
+            Estoque::class,
+            [AtualizarEstoque::class, 'handle']
+        );
+    
+        Event::listen(function (Estoque $event) {
+            //
+        });
     }
 }
