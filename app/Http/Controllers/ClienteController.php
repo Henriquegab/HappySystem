@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\PedidoProduto;
+use App\Models\Pedido;
 
 class ClienteController extends Controller
 {
@@ -190,9 +192,25 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
+        $deletar = Pedido::where('cliente_id', $cliente->id)->get();
         
-       
+        foreach ($deletar as $deleta) {
+           // dd($deleta->getAttributes()['id']);
+          
+
+            $excluir = PedidoProduto::where('pedido_id', $deleta->getAttributes()['id']);
+            $excluir->delete();
+            $deleta->delete();
+            
+        }
+
+        
+        
+        //$deletar->delete();
         $cliente->delete();
+
+       
+
 
         
         return redirect()->route('clientes.index');

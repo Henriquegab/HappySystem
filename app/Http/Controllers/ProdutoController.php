@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\PedidoProduto;
 
 class ProdutoController extends Controller
 {
@@ -160,6 +161,8 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
+        $deletar = PedidoProduto::where('produto_id', $produto->id);
+        $deletar->delete();
         $produto->delete();
 
         
