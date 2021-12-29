@@ -184,17 +184,26 @@ class PedidoProdutoController extends Controller
         $deletar = $deletar->first();
         $deletar->delete();
 
-        $verificar = PedidoProduto::where('pedido_id', $pedidoProduto->pedido_id)->get();
+        $verificar = PedidoProduto::where('pedido_id', $pedido->id)->get();
 
+        //dd($pedidoProduto);
+        //dd($verificar[0]);
+
+        
         if($verificar->isEmpty()){
-            dd($verificar);
+            
+
+            $notification = 'O pedido '.$pedido->id.' foi excluído!';
+            $pedido->delete();
+            
+            return view('home', ['notification' => $notification]);
         };
 
         
 
-        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get(0);
+        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get();
         //dd($pedidoProduto);
 
-        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido->id, 'id' => $id]);
+        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto[0], 'primeiro' => $primeiro, 'pedido' => $pedido->id, 'id' => $id]);
     }
 }

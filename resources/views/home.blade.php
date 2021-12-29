@@ -8,6 +8,12 @@
 
 @section('content')
     <p align="center">Seja Bem-vindo!</p>
+
+
+    @if (isset($notification))
+    <p align="center">{{ $notification }}</p>
+
+    @endif
 @stop
 
 @section('css')
