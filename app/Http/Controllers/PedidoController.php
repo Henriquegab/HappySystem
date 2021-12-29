@@ -27,11 +27,11 @@ class PedidoController extends Controller
     public function create()
     {
         $clientes = Cliente::all();
-        
+
         return view('Order.cadastro', ['clientes' => $clientes]);
     }
 
-   
+
 
     /**
      * Store a newly created resource in storage.
@@ -41,30 +41,30 @@ class PedidoController extends Controller
      */
     public function store(Request $request, int $primeiro)
     {
-       
+
         $rules = [
             'cliente' => 'required'
-               
-            
-        
-            
-           
 
 
-            
+
+
+
+
+
+
 
         ];
 
         $feedback = [
 
             'required' => 'O campo :attribute deve ser preenchido',
-        
+
         ];
 
 
 
         $request->validate($rules, $feedback);
-        
+
 
         $id = $request->get('cliente');
         //dd($primeiro);
@@ -72,7 +72,7 @@ class PedidoController extends Controller
         //dd($pedido);
 
 
-       
+
         return redirect()->route('pedido-produto.create', ['id' => $id, 'primeiro' => $primeiro]);
     }
 

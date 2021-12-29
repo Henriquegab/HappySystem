@@ -15,13 +15,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::where('nome', 'like', '%'.$request->input('nome').'%')
-            
-            ->where('marca', 'like', '%'.$request->input('marca').'%')
-            ->where('descricao', 'like', '%'.$request->input('descricao').'%')
-            ->where('preco', 'like', '%'.$request->input('preco').'%')
-            ->where('estoque', 'like', '%'.$request->input('estoque').'%')
-            ->Paginate(30);
+        $produtos = Produto::Paginate(30);
        
         return view('Product.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }

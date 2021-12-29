@@ -178,11 +178,23 @@ class PedidoProdutoController extends Controller
      */
     public function destroy(PedidoProduto $pedidoProduto, String $primeiro, Pedido $pedido, Produto $produto,  String $id)
     {
-      
+        //dd($pedidoProduto);
         $deletar = PedidoProduto::where('pedido_id', $pedidoProduto->pedido_id)->where('produto_id', $produto->id);
+        $salvar = $deletar->first()->getAttributes()['pedido_id'];
         $deletar = $deletar->first();
         $deletar->delete();
 
-        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedidoProduto->pedido_id, 'id' => $id]);
+        $verificar = PedidoProduto::where('pedido_id', $pedidoProduto->pedido_id)->get();
+
+        if($verificar->isEmpty()){
+            dd($verificar);
+        };
+
+        
+
+        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get(0);
+        //dd($pedidoProduto);
+
+        return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido->id, 'id' => $id]);
     }
 }

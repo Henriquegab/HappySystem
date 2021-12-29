@@ -16,17 +16,7 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-        $clientes = Cliente::where('nome', 'like', '%'.$request->input('nome').'%')
-            
-            ->where('cpf', 'like', '%'.$request->input('cpf').'%')
-            ->where('uf', 'like', '%'.$request->input('uf').'%')
-            ->where('email', 'like', '%'.$request->input('email').'%')
-            ->where('endereco', 'like', '%'.$request->input('endereco').'%')
-            ->where('numerocasa', 'like', '%'.$request->input('numerocasa').'%')
-            ->where('cep', 'like', '%'.$request->input('cep').'%')
-            ->where('sexo', 'like', '%'.$request->input('sexo').'%')
-            ->orderby('id', 'asc')
-            ->Paginate(30)->withQueryString();
+        $clientes = Cliente::orderby('id', 'asc')->Paginate(30)->withQueryString();
        
 
 
@@ -95,7 +85,7 @@ class ClienteController extends Controller
 
         //dd($request);
 
-        
+        /*
         $clientes = new Cliente();
         $clientes->nome = $request->get('nome');
         $clientes->email = $request->get('email');
@@ -108,7 +98,10 @@ class ClienteController extends Controller
 
         
         $clientes->save();
-        
+        */
+
+        Cliente::create($request->all());
+
         return redirect()->route('clientes.index');
 
     }
