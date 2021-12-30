@@ -71,7 +71,7 @@ use App\Models\PedidoProduto;
                     <td>{{$pedido->id}}</td>
                     <td>{{$cliente}}</td>
                     <td>{{$QuantidadeProdutos}}</td>
-                    
+                     
                     <td>
                     
                     
