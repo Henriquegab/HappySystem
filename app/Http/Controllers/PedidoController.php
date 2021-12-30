@@ -16,7 +16,12 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::orderby('id', 'asc')->Paginate(30);
+        $clientes = Cliente::all();
+
+        //dd($pedidos->count());
+
+        return view('Order.index', ['pedidos' => $pedidos, 'clientes' => $clientes]);
     }
 
     /**
