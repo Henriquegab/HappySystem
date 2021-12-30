@@ -28,7 +28,7 @@ class PedidoProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(String $id, int $primeiro, Pedido $pedido)
+    public function create(String $id, String $primeiro, Pedido $pedido)
     {
         //dd($pedido);
         $produtos = Produto::all();
@@ -48,15 +48,18 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, String $id, int $primeiro, Pedido $pedido)
+    public function store(Request $request, String $id, String $primeiro, Pedido $pedido)
     {
+        $verificaEstoque = Produto::where('id', $request->produto)->get();
+        $verificaEstoque = $verificaEstoque->first()->getAttributes()['estoque'];
+        //dd($verificaEstoque);
 
         $rules = [
             'produto' => 'required',
                
             
         
-            'quantidade' => 'required|gte:1',
+            'quantidade' => 'required|gte:1|lte:'.$verificaEstoque,
            
 
 
@@ -67,7 +70,8 @@ class PedidoProdutoController extends Controller
         $feedback = [
 
             'required' => 'O campo :attribute deve ser preenchido',
-            'quantidade' => 'A quantidade deve ser maior que 1!'
+            'quantidade' => 'A quantidade deve ser maior que 1!',
+            'lte' => 'O campo quantidade não pode ser maior que o estoque disponível!'
         ];
 
 
@@ -147,15 +151,26 @@ class PedidoProdutoController extends Controller
         return view('Order.lista', ['quantidades' => $quantidades, 'pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(String $id, String $primeiro, Pedido $pedido, String $quantidade)
     {
-        //
+        //dd($pedido);
+        $produtos = Produto::all();
+        
+        //$pedido->save();
+        //dd($pedido);
+        //dd($request->get('request'));
+        //dd($primeiro);
+
+       
+        return view('Order.editar', ['id' => $id, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido, 'quantidade' => $quantidade]);
     }
 
     /**
@@ -165,9 +180,67 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, String $id, String $primeiro, Pedido $pedido, String $quantidade)
     {
+        $verificaEstoque = Produto::where('id', $request->produto)->get();
+        $verificaEstoque = $verificaEstoque->first()->getAttributes()['estoque'];
         
+        $verificaEstoque = $verificaEstoque + $quantidade;
+
+        $rules = [
+            'produto' => 'required',
+               
+            
+        
+            'quantidade' => 'required|gte:1|lte:'.$verificaEstoque,
+           
+
+
+            
+
+        ];
+
+        $feedback = [
+
+            'required' => 'O campo :attribute deve ser preenchido',
+            'quantidade' => 'A quantidade deve ser maior que 1!',
+            'lte' => 'O campo quantidade não pode ser maior que o estoque disponível!'
+        ];
+
+
+
+        $request->validate($rules, $feedback);
+        
+
+        
+        
+        if($primeiro == 5){
+            $pedido = new Pedido();
+            $pedido->cliente_id = $id;
+            $pedido->save();
+            
+
+        }
+        $primeiro = 0;
+
+        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->where('produto_id', $request->produto)->get();
+            //$pedidoProduto->first()->pedido_id = $pedido->id;
+            //dd($pedido);
+            $pedidoProduto->first()->produto_id = $request->get('produto');
+            $pedidoProduto->first()->quantidade = $request->get('quantidade');
+            $pedidoProduto->first()->save();
+        
+        //dd($pedidoProduto->first()->getAttributes()['']);
+
+            return redirect()->route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto->first(), 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
+           
+        
+        
+
+        //$pedidoProduto = PedidoProduto::Where('pedido_id', $pedido->id);
+
+
+        //dd($pedidoProduto);
     }
 
     /**

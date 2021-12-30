@@ -36,6 +36,8 @@ Route::middleware('auth')->group(
         Route::post('pedido-produto/store/{id?}/{primeiro}/{pedido?}', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
         Route::get('pedido-produto/show/{pedidoProduto}/{primeiro}/{pedido}/{id?}', [PedidoProdutoController::class, 'show'])->name('pedido-produto.show');
         Route::delete('pedido-produto/destroy/{pedidoProduto}/{primeiro}/{pedido}/{produto}/{id?}', [PedidoProdutoController::class, 'destroy'])->name('pedido-produto.destroy');
+        Route::get('pedido-produto/edit/{id?}/{primeiro}/{pedido?}/{quantidade?}', [PedidoProdutoController::class, 'edit'])->name('pedido-produto.edit');
+        Route::put('pedido-produto/update/{id?}/{primeiro}/{pedido?}/{quantidade}', [PedidoProdutoController::class, 'update'])->name('pedido-produto.update');
     }
 
 );

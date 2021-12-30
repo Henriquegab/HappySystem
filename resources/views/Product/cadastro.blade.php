@@ -26,12 +26,12 @@
         <div class="row">
             
             <x-adminlte-input enable-old-support name="descricao" type="text" label="Descrição" placeholder="Digite a descrição..."
-                    fgroup-class="col-md-11"/>
+                    fgroup-class="col-md-10"/>
 
            
 
-            <x-adminlte-input enable-old-support name="estoque" type="number" label="Estoque" placeholder="2"
-                    fgroup-class="col-md-1"/>
+            <x-adminlte-input enable-old-support name="estoque" type="number" label="Estoque" placeholder="3"
+                    fgroup-class="col-md-2"/>
 
             
         </div>

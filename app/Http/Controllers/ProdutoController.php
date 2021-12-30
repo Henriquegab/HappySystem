@@ -43,7 +43,7 @@ class ProdutoController extends Controller
             'marca' => 'required',
             'descricao' => 'required',
             'preco' => 'required|gte:0',
-            'estoque' => 'required',
+            'estoque' => 'required|gte:1',
             
 
 
@@ -56,6 +56,7 @@ class ProdutoController extends Controller
             'required' => 'O campo :attribute deve ser preenchido',
             'preco.gte' => 'O preço não pode ser menor que 0',
             'nome.min' => 'O nome deve conter no mínimo 3 caracteres',
+            'estoque.gte' => 'O estoque adicionado deve ser maior que 1!',
             'nome.max' => 'O nome deve conter no máximo 40 caracteres',
             
         ];
@@ -118,7 +119,7 @@ class ProdutoController extends Controller
             'marca' => 'required',
             'descricao' => 'required',
             'preco' => 'required|gte:0',
-            'estoque' => 'required',
+            'estoque' => 'required|gte:1',
             
 
 
@@ -131,6 +132,7 @@ class ProdutoController extends Controller
             'required' => 'O campo :attribute deve ser preenchido',
             'preco.gte' => 'O preço não pode ser menor que 0',
             'nome.min' => 'O nome deve conter no mínimo 3 caracteres',
+            'estoque.gte' => 'O estoque adicionado deve ser maior que 1!',
             'nome.max' => 'O nome deve conter no máximo 40 caracteres',
             
         ];

@@ -72,7 +72,7 @@
                     <td>{{'R$ '.number_format($quantidades[$produto->id] * $produto->preco, 2)}}</td>
                     <td>
                     
-                    <form action="{{route('pedidosProdutos.edit', $produto->id)}}">
+                    <form action="{{route('pedido-produto.edit', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedido->id, 'quantidade' => $quantidades[$produto->id]])}}">
                         <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
                             <i class="fa fa-lg fa-fw fa-pen"></i>
                         </button>

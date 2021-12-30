@@ -21,7 +21,7 @@
 
             {{-- With label, invalid feedback disabled and form group class --}}
             
-                <x-adminlte-input enable-old-support name="cpf" type="name" label="CPF" placeholder="11111111111"
+                <x-adminlte-input enable-old-support name="cpf" type="number" label="CPF" placeholder="11111111111"
                     fgroup-class="col-md-2"/>
         </div>
         <div class="row">
