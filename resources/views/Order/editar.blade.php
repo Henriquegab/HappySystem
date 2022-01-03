@@ -39,7 +39,7 @@
                
                         <x-adminlte-options
 
-                        empty-option="Selecione uma opção"        
+                        empty-option="Selecione uma opçãoo"        
                         :options="$optionsp" 
                         :selected="$produto->id"
                         />
