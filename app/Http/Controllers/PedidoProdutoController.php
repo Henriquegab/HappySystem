@@ -139,16 +139,17 @@ class PedidoProdutoController extends Controller
 
         //dd($pedido->produtos);
         $pedidoProdutos = PedidoProduto::where('pedido_id', $pedido->id)->get();
-
+        //dd($id);
         $quantidades = array();
+        $x = array();
         foreach ($pedidoProdutos as $pedidoProduto) {
             $quantidades[$pedidoProduto->produto_id] = $pedidoProduto->quantidade;
-           
+           $x[$pedidoProduto->produto_id] = $pedidoProduto->id;
         }
 
         
         
-        return view('Order.lista', ['quantidades' => $quantidades, 'pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id]);
+        return view('Order.lista', ['quantidades' => $quantidades, 'pedidoProduto' => $pedidoProduto, 'primeiro' => $primeiro, 'pedido' => $pedido, 'id' => $id, 'x' => $x]);
     }
 
 
@@ -159,7 +160,7 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(String $id, String $primeiro, Pedido $pedido, String $quantidade)
+    public function edit(String $id, String $primeiro, Pedido $pedido, String $quantidade, $x)
     {
         //dd($pedido);
         $produtos = Produto::all();
@@ -169,8 +170,13 @@ class PedidoProdutoController extends Controller
         //dd($request->get('request'));
         //dd($primeiro);
 
-       
-        return view('Order.editar', ['id' => $id, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido, 'quantidade' => $quantidade]);
+        //dd($x);
+
+        
+        $selecionar = PedidoProduto::where('id', $x)->get()->first();
+        //dd($selecionar);
+
+        return view('Order.editar', ['id' => $id, 'primeiro' => $primeiro, 'produtos' => $produtos, 'pedido' => $pedido, 'quantidade' => $quantidade, 'selecionar' => $selecionar]);
     }
 
     /**
@@ -183,7 +189,8 @@ class PedidoProdutoController extends Controller
     public function update(Request $request, String $id, String $primeiro, Pedido $pedido, String $quantidade)
     {
         $verificaEstoque = Produto::where('id', $request->produto)->get();
-        $verificaEstoque = $verificaEstoque->first()->getAttributes()['estoque'];
+        dd($request);
+        $verificaEstoque = $verificaEstoque->first()->estoque;
         
         $verificaEstoque = $verificaEstoque + $quantidade;
 
@@ -224,6 +231,7 @@ class PedidoProdutoController extends Controller
         $primeiro = 0;
 
         $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->where('produto_id', $request->produto)->get();
+        //dd($pedidoProduto->first()->produto_id);
             //$pedidoProduto->first()->pedido_id = $pedido->id;
             //dd($pedido);
             $pedidoProduto->first()->produto_id = $request->get('produto');
