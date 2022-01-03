@@ -54,8 +54,8 @@ use App\Models\PedidoProduto;
                   
         
         */
-        
-        
+        $primeiro = 0;
+       
 
         
         @endphp
@@ -65,17 +65,36 @@ use App\Models\PedidoProduto;
             @foreach($pedidos as $pedido)
                 <tr>
                     <?php
-                        $cliente = Cliente::where('id', $pedido->cliente_id)->get()->first()->getAttributes()['nome'];
+                        $cliente = Cliente::where('id', $pedido->cliente_id)->get()->first()->getAttributes();
                         $QuantidadeProdutos = PedidoProduto::where('pedido_id', $pedido->id)->count();
+                        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get()[0];
 
+                        //$pedidoProduto = new PedidoProduto();
+
+                       
                         if (!($QuantidadeProdutos == 0)) {
                             ?>
                             <td>{{$pedido->id}}</td>
-                            <td>{{$cliente}}</td>
+                            <td>{{$cliente['nome']}}</td>
                             <td>{{$QuantidadeProdutos}}</td>
                              
                             <td>
-                            
+                                
+                                <form action="{{route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto,  'primeiro' => $primeiro, 'pedido' => $pedido->id, 'id' => $cliente['id']  ])}}">
+                                    <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Abrir Pedido" type="submit">
+                                        <i class="fa fa-lg fa-fw fa-eye"></i>
+                                    </button>
+                                </form>
+                                
+                                
+                                
+            
+                                
+                                
+                                
+            
+                                
+                                
                             
                         
                             </td>

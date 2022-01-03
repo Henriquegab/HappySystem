@@ -19,54 +19,54 @@
     
     
     
-        @method('PUT')
-         @csrf
-         
-            {{-- Minimal --}}
-        <div class="row">
-
-            @php
-            $optionsp = [];
-           
-                foreach ($produtos as $produto) {
-                    $optionsp += [$produto->id => $produto->nome];
-                }
-
-                
-            @endphp
+            @method('PUT')
+            @csrf
             
-            <x-adminlte-select2 enable-old-support label="Produto" name="produto" fgroup-class="col-md-5" >
-               
-                        <x-adminlte-options
+                {{-- Minimal --}}
+            <div class="row">
 
-                        empty-option="Selecione uma opção"        
-                        :options="$optionsp" 
-                        :selected="$produto->id"
-                        />
-                   
+                @php
+                $optionsp = [];
+            
+                    foreach ($produtos as $produto) {
+                        $optionsp += [$produto->id => $produto->nome];
+                    }
+
+                    //dd($produtos);
+                @endphp
+                
+                <x-adminlte-select enable-old-support label="Produto" name="produto" fgroup-class="col-md-5" >
+                
+                            <x-adminlte-options :options="$optionsp[$selecionar->produto_id]" :selected="$selecionar->produto_id" />
+                            
+                            
+                            
+                            
+                            
+                    
+                        
+                        
+                
                     
                     
-            
                 
-                
-               
+                    
+
+                    
+                </x-adminlte-select>
                 
 
+                <x-adminlte-input enable-old-support name="quantidade" type="number" label="Quantidade" placeholder="2"
+                fgroup-class="col-md-2" value="{{ $quantidade }}"/>
+            
                 
-            </x-adminlte-select2>
-            
-
-            <x-adminlte-input enable-old-support name="quantidade" type="number" label="Quantidade" placeholder="2"
-            fgroup-class="col-md-2" value="{{ $quantidade }}"/>
-           
+                
+            </div>
             
             
-        </div>
-        
-        
-        
-        
-            <x-adminlte-button class="btn-flat" type="submit" label="Editar" theme="success" icon="fas fa-lg fa-save"/>
+            
+            
+                <x-adminlte-button class="btn-flat" type="submit" label="Editar" theme="success" icon="fas fa-lg fa-save"/>
     </form>
         
 
