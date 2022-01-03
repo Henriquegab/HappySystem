@@ -19,7 +19,7 @@ use App\Models\PedidoProduto;
 
             ['label' => 'Id', 'width' => 20],
             ['label' => 'Cliente', 'width' => 20],
-            ['label' => 'Número de Pedidos', 'width' => 20],
+            ['label' => 'Número de Produtos', 'width' => 20],
             ['label' => 'Ações', 'no-export' => true, 'width' => 5]
         ];
 
@@ -64,19 +64,28 @@ use App\Models\PedidoProduto;
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
             @foreach($pedidos as $pedido)
                 <tr>
-                    @php
+                    <?php
                         $cliente = Cliente::where('id', $pedido->cliente_id)->get()->first()->getAttributes()['nome'];
                         $QuantidadeProdutos = PedidoProduto::where('pedido_id', $pedido->id)->count();
-                    @endphp
-                    <td>{{$pedido->id}}</td>
-                    <td>{{$cliente}}</td>
-                    <td>{{$QuantidadeProdutos}}</td>
-                     
-                    <td>
+
+                        if (!($QuantidadeProdutos == 0)) {
+                            ?>
+                            <td>{{$pedido->id}}</td>
+                            <td>{{$cliente}}</td>
+                            <td>{{$QuantidadeProdutos}}</td>
+                             
+                            <td>
+                            
+                            
+                        
+                            </td>
+
+                            <?php
+
+                            
+                        }
+                    ?>
                     
-                    
-                
-                    </td>
                 </tr>
             @endforeach
            

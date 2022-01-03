@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Pedido;
 use App\Models\Produto;
+use App\Models\PedidoProduto;   
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -18,6 +19,17 @@ class PedidoController extends Controller
     {
         $pedidos = Pedido::orderby('id', 'asc')->Paginate(30);
         $clientes = Cliente::all();
+
+        foreach($pedidos as $pedido)
+        {
+
+            $QuantidadeProdutos = PedidoProduto::where('pedido_id', $pedido->id)->count();
+            if(!($QuantidadeProdutos >= 1)){
+
+                //dd($QuantidadeProdutos);
+                $pedido->delete();
+            }
+        }
 
         //dd($pedidos->count());
 
