@@ -7,20 +7,19 @@
 @stop
 
 @section('content')
-    
-            
-
+   
+@php
+use App\Models\Cliente;
+use App\Models\PedidoProduto;      
+@endphp
 
 
         @php
         $heads = [
 
             ['label' => 'Id', 'width' => 20],
-            ['label' => 'Nome', 'width' => 20],
-            ['label' => 'Marca', 'width' => 20],
-            ['label' => 'Descrição',  'width' => 40],
-            ['label' => 'Preço',  'width' => 5],
-            ['label' => 'Estoque', 'no-export' => true,  'width' => 2],
+            ['label' => 'Cliente', 'width' => 20],
+            ['label' => 'Número de Produtos', 'width' => 20],
             ['label' => 'Ações', 'no-export' => true, 'width' => 5]
         ];
 
@@ -49,66 +48,63 @@
 
 
 
+        /* 
+                    
+                
+                  
         
-
+        */
+        $primeiro = 0;
+       
 
         
         @endphp
 
         {{-- Minimal example / fill data using the component slot --}}
         <x-adminlte-datatable id="table" :heads="$heads" head-theme="dark" :config="$config" theme="light" striped hoverable with-buttons beautify>
-            @foreach($produtos as $produto)
+            @foreach($pedidos as $pedido)
                 <tr>
-                    
-                    <td>{{$produto->id}}</td>
-                    <td>{{$produto->nome}}</td>
-                    <td>{{$produto->marca}}</td>
-                    <td>{{$produto->descricao}} </td>
-                    <td>{{$produto->preco}}</td>
-                    <td>{{$produto->estoque}}</td>
-                    <td>
-                    
-                    <form action="{{route('produtos.edit', $produto->id)}}">
-                        <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" type="submit">
-                            <i class="fa fa-lg fa-fw fa-pen"></i>
-                        </button>
-                    </form>
-                    
-                    
+                    <?php
+                        $cliente = Cliente::where('id', $pedido->cliente_id)->get()->first()->getAttributes();
+                        $QuantidadeProdutos = PedidoProduto::where('pedido_id', $pedido->id)->count();
+                        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get()[0];
 
-                    
-                    
-                    
-
-                    
-                    <form method="post" action="{{route('produtos.destroy', $produto->id)}}">
-
-
-                        <x-adminlte-modal id="{{ 'ctz'.$produto->id }}" title="Confirmar Exclusão" size="md" theme="warning"
-                            icon="fas fa-exclamation-circle" v-centered static-backdrop >
-                            <div style="height:50px;">Você tem Certeza que deseja excluir este produto?</div>
-                            <x-slot name="footerSlot">
-                                <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim"/>
-                                
-                                
-                                <x-adminlte-button theme="danger" label="Não" data-dismiss="modal"/>
-                                @csrf
-                            </x-slot>
-                        </x-adminlte-modal>
+                        //$pedidoProduto = new PedidoProduto();
 
                        
+                        if (!($QuantidadeProdutos == 0)) {
+                            ?>
+                            <td>{{$pedido->id}}</td>
+                            <td>{{$cliente['nome']}}</td>
+                            <td>{{$QuantidadeProdutos}}</td>
+                             
+                            <td>
+                                
+                                <form action="{{route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto,  'primeiro' => $primeiro, 'pedido' => $pedido->id, 'id' => $cliente['id']  ])}}">
+                                    <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Abrir Pedido" type="submit">
+                                        <i class="fa fa-lg fa-fw fa-eye"></i>
+                                    </button>
+                                </form>
+                                
+                                
+                                
+            
+                                
+                                
+                                
+            
+                                
+                                
+                            
+                        
+                            </td>
 
-                        
-                        @method('DELETE')
-                        
-                        
-                    </form>
+                            <?php
+
+                            
+                        }
+                    ?>
                     
-                    <button class="btn btn-xs btn-default text-danger mx-1 shadow"  data-toggle="modal" data-target="{{ '#ctz'.$produto->id }}" title="Deletar">
-                        <i class="fa fa-lg fa-fw fa-trash"></i>
-                    </button>
-                
-                    </td>
                 </tr>
             @endforeach
            
@@ -118,7 +114,7 @@
        
         
         <br>
-        {{ $produtos->links() }}
+        {{ $pedidos->links() }}
         <br>
 
 
