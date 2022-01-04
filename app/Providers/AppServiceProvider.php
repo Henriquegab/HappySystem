@@ -8,6 +8,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 use App\Models\Cliente;
 use App\Models\Produto;
+use App\Models\Pedido;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -113,7 +114,9 @@ class AppServiceProvider extends ServiceProvider
                     [
                         'text'        => 'Listagem de Pedidos',
                         'route'       => 'pedidos.index',
+                        'label'       => Pedido::count(),
                         'icon'        => 'fas fa-cart-arrow-down',
+                        'label_color' => 'warning',
                         
                     ]
                    

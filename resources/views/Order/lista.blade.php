@@ -51,7 +51,7 @@
 
 
 
-        
+        $total = 0;
 
 
         
@@ -78,7 +78,9 @@
                         </button>
                     </form>
                     
-                    
+                    @php
+                        $total += $quantidades[$produto->id] * $produto->preco;
+                    @endphp
                     
 
                     
@@ -116,18 +118,24 @@
                     </td>
                 </tr>
             @endforeach
-                
+            
         </x-adminlte-datatable>
         
 
         <x-adminlte-button class="btn-flat" type="button" onclick="window.location='{{ route('pedido-produto.create', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedidoProduto->pedido_id,  ]) }}'" label="Adicionar" theme="success" icon="fas fa-lg fa-save"/>
-        
-       
-        
+           
+            
         <br>
-        
-        <br>
+        <div style="padding-left: 75%" >
 
+            <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+
+        </div>
+             
+        
+        
+        
+        <br>
 
 
 
