@@ -29,15 +29,22 @@
                 $optionsp = [];
             
                     foreach ($produtos as $produto) {
-                        $optionsp += [$produto->id => $produto->nome];
+
+                        if ($selecionar->produto_id == $produto->id) {
+                            $optionsp += [$produto->id => $produto->nome];
+                        }
+                        
                     }
 
                     //dd($produtos);
                 @endphp
                 
-                <x-adminlte-select enable-old-support label="Produto" name="produto" fgroup-class="col-md-5" >
+                <x-adminlte-select label="Produto" name="produto" fgroup-class="col-md-5" >
                 
-                            <x-adminlte-options :options="$optionsp[$selecionar->produto_id]" :selected="$selecionar->produto_id" />
+                            <x-adminlte-options :options="$optionsp"  
+                            :selected="$optionsp[$selecionar->produto_id]"
+                               
+                                />
                             
                             
                             
