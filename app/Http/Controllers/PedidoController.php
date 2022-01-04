@@ -141,4 +141,22 @@ class PedidoController extends Controller
 
         return redirect()->route('pedidos.index');
     }
+
+    public function status(Pedido $pedido)
+    {
+        
+        $pedido->status = 1;
+        $pedido->save();
+
+        return redirect()->route('pedidos.index');
+    }
+
+    public function status_save(Request $request, Pedido $pedido)
+    {
+        //dd($request);
+        $pedido->status = $request->status;
+        $pedido->save();
+
+        return redirect()->route('pedidos.index');
+    }
 }

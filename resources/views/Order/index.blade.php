@@ -17,9 +17,10 @@ use App\Models\PedidoProduto;
         @php
         $heads = [
 
-            ['label' => 'Id', 'width' => 20],
+            ['label' => 'Número do Pedido', 'width' => 20],
             ['label' => 'Cliente', 'width' => 20],
             ['label' => 'Número de Produtos', 'width' => 20],
+            ['label' => 'Status', 'width' => 20],
             ['label' => 'Ações', 'no-export' => true, 'width' => 5]
         ];
 
@@ -55,6 +56,7 @@ use App\Models\PedidoProduto;
         
         */
         $primeiro = 0;
+        $options = ['Pedido em andamento', 'Aguardando pagamento', 'Pedido Aprovado', 'Pedido Cancelado'];
        
 
         
@@ -77,9 +79,32 @@ use App\Models\PedidoProduto;
                             <td>{{$pedido->id}}</td>
                             <td>{{$cliente['nome']}}</td>
                             <td>{{$QuantidadeProdutos}}</td>
-                             
                             <td>
+                               
+                            <form method="post" action="{{ route('pedido.status_save', ['pedido' => $pedido]) }}">
+                                @csrf
+                                <x-adminlte-select name="status" >
+                        
+                                            <x-adminlte-options :options="$options"  
+                                            :selected="$pedido->status"
+                                            
+                                                />
+                                        
+                                </x-adminlte-select>
+                            
+                            
+                                </td>
                                 
+                                <td>
+                                
+                                
+                                    <x-adminlte-button class="btn btn-xs btn-default text-primary mx-1 shadow"  title="Salvar Status" type="submit" icon="fa fa-lg fa-fw fa-thumbs-up">
+                                        
+                                    </x-adminlte-button>
+                            </form>
+
+
+
                                 <form action="{{route('pedido-produto.show', ['pedidoProduto' => $pedidoProduto,  'primeiro' => $primeiro, 'pedido' => $pedido->id, 'id' => $cliente['id']  ])}}">
                                     <button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Abrir Pedido" type="submit">
                                         <i class="fa fa-lg fa-fw fa-eye"></i>

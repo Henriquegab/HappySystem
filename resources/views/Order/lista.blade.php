@@ -121,16 +121,28 @@
             
         </x-adminlte-datatable>
         
+        <div>
 
-        <x-adminlte-button class="btn-flat" type="button" onclick="window.location='{{ route('pedido-produto.create', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedidoProduto->pedido_id,  ]) }}'" label="Adicionar" theme="success" icon="fas fa-lg fa-save"/>
-           
+            <x-adminlte-button class="btn-flat" type="button" onclick="window.location='{{ route('pedido-produto.create', ['id' => $id, 'primeiro' => $primeiro, 'pedido' => $pedidoProduto->pedido_id,  ]) }}'" label="Adicionar" theme="success" icon="fas fa-lg fa-plus"/>
             
-        <br>
-        <div style="padding-left: 75%" >
+                
 
-            <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+            <x-adminlte-button style="align:right" class="btn-flat" type="button" onclick="window.location='{{ route('pedido.status', ['pedido' => $pedidoProduto->pedido_id  ]) }}'" label="Confirmar Pedido" theme="outline-success" icon="fas fa-lg fa-thumbs-up"/> 
+                
+                
+                <div style="padding-left: 75%" >
+
+                    <x-adminlte-info-box title="Subtotal" text="{{ 'R$ '.number_format($total, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/> 
+        
+                </div>
+            
 
         </div>
+
+
+            
+        <br>
+        
              
         
         

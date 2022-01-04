@@ -45,21 +45,7 @@
                             :selected="$optionsp[$selecionar->produto_id]"
                                
                                 />
-                            
-                            
-                            
-                            
-                            
-                    
                         
-                        
-                
-                    
-                    
-                
-                    
-
-                    
                 </x-adminlte-select>
                 
 
