@@ -44,7 +44,7 @@ use App\Models\PedidoProduto;
             
             'ordering' => true,
             'order' => [[0, 'asc']],
-           // 'columns' => ['orderable'=> true]
+           //'columns' => ['orderable'=> true]
         ];
 
 

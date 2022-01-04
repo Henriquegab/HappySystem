@@ -22,7 +22,7 @@ class CreateTriggerEstoque extends Migration
             ON pedidos_produtos
             FOR EACH ROW
             BEGIN
-                UPDATE produtos SET estoque = estoque - NEW.quantidade
+            UPDATE produtos SET estoque = estoque - NEW.quantidade
             WHERE id = NEW.produto_id;
             END
 
