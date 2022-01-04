@@ -189,7 +189,7 @@ class PedidoProdutoController extends Controller
     public function update(Request $request, String $id, String $primeiro, Pedido $pedido, String $quantidade)
     {
         $verificaEstoque = Produto::where('id', $request->produto)->get();
-        dd($request);
+        //dd($request);
         $verificaEstoque = $verificaEstoque->first()->estoque;
         
         $verificaEstoque = $verificaEstoque + $quantidade;
