@@ -91,7 +91,7 @@ use App\Models\PedidoProduto;
 
                                     <x-adminlte-modal id="{{ 'ctz'.$pedido->id }}" title="Confirmar Exclusão" size="md" theme="warning"
                                         icon="fas fa-exclamation-circle" v-centered static-backdrop >
-                                        <div style="height:50px;">Você tem Certeza que deseja excluir este usuário?</div>
+                                        <div style="height:50px;">Você tem Certeza que deseja excluir este pedido?</div>
                                         <x-slot name="footerSlot">
                                             <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim"/>
                                             
