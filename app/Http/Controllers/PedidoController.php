@@ -133,8 +133,12 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pedido $pedido)
     {
-        //
+        $excluir = PedidoProduto::where('pedido_id', $pedido->id);
+        $excluir->delete();
+        $pedido->delete();
+
+        return redirect()->route('pedidos.index');
     }
 }

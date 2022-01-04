@@ -85,10 +85,32 @@ use App\Models\PedidoProduto;
                                         <i class="fa fa-lg fa-fw fa-eye"></i>
                                     </button>
                                 </form>
-                                
-                                
-                                
+
+                                <form method="post" action="{{route('pedidos.destroy', $pedido)}}">
+
+
+                                    <x-adminlte-modal id="{{ 'ctz'.$pedido->id }}" title="Confirmar Exclusão" size="md" theme="warning"
+                                        icon="fas fa-exclamation-circle" v-centered static-backdrop >
+                                        <div style="height:50px;">Você tem Certeza que deseja excluir este usuário?</div>
+                                        <x-slot name="footerSlot">
+                                            <x-adminlte-button class="mr-auto" type="submit" theme="success" label="Sim"/>
+                                            
+                                            
+                                            <x-adminlte-button theme="danger" label="Não" data-dismiss="modal"/>
+                                            @csrf
+                                        </x-slot>
+                                    </x-adminlte-modal>
             
+                                   
+            
+                                    
+                                    @method('DELETE')
+                                    
+                                    
+                                </form>
+                                <button class="btn btn-xs btn-default text-danger mx-1 shadow"  data-toggle="modal" data-target="{{ '#ctz'.$pedido->id }}" title="Deletar">
+                                    <i class="fa fa-lg fa-fw fa-trash"></i>
+                                </button>
                                 
                                 
                                 
