@@ -17,7 +17,7 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
         $produtos = Produto::Paginate(30);
-       
+        
         return view('Product.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
