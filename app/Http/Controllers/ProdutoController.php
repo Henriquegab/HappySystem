@@ -175,14 +175,17 @@ class ProdutoController extends Controller
                                 //dd(4);
                                 $deletado->delete();
                                 $excluirPedido->delete();
+                                $produto->delete();
+                                return redirect()->route('home');
                             }
                     }
                 //dd(5);
             }
         };
        // dd(6);
-        $produto->delete();
 
+        $deletado->delete();
+        $produto->delete();
         
         return redirect()->route('home');
     }
