@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\PedidoProduto;
+use App\Models\Pedido;
 
 class ProdutoController extends Controller
 {
@@ -158,7 +159,28 @@ class ProdutoController extends Controller
     public function destroy(Produto $produto)
     {
         $deletar = PedidoProduto::where('produto_id', $produto->id);
-        $deletar->delete();
+        $deletado = $deletar;
+        
+        if($deletar->exists()){
+            //dd(0);
+            foreach($deletar->get() as $deleta){
+                //dd($deleta->getAttributes()['pedido_id']);
+
+                $verificaUnico = PedidoProduto::where('pedido_id', $deleta->getAttributes()['pedido_id'])->where('produto_id', '!=', $produto->id)->get()->first();
+                //dd(1);
+                    if($verificaUnico == NULL){
+                        $excluirPedido = Pedido::where('id', $deleta->getAttributes()['pedido_id'])->get()->first();
+                       // dd(2);
+                            if(!$excluirPedido == NULL){
+                                //dd(4);
+                                $deletado->delete();
+                                $excluirPedido->delete();
+                            }
+                    }
+                //dd(5);
+            }
+        };
+       // dd(6);
         $produto->delete();
 
         

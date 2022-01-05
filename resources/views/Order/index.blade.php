@@ -69,7 +69,14 @@ use App\Models\PedidoProduto;
                     <?php
                         $cliente = Cliente::where('id', $pedido->cliente_id)->get()->first()->getAttributes();
                         $QuantidadeProdutos = PedidoProduto::where('pedido_id', $pedido->id)->count();
-                        $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get()[0];
+                        if (!($QuantidadeProdutos == 0)){
+                            $pedidoProduto = PedidoProduto::where('pedido_id', $pedido->id)->get()->first();
+                        }
+                        else {
+                            return redirect()->route('home');
+                        }
+                        
+                       
 
                         //$pedidoProduto = new PedidoProduto();
 
