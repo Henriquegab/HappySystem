@@ -162,3 +162,8 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+
+@section('footer')
+    <h6 align="center">Happy System - <a href="https://github.com/Henriquegab">Henrique gabriel</a> Todos os Direitos Reservados</h6>
+    
+@stop
