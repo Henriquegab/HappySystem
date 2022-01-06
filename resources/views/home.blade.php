@@ -26,7 +26,7 @@
         $metaProduto = 15;
         $progressoCliente = Cliente::count() / $metaCliente * 100;
         $progressoProduto = Produto::count() / $metaProduto * 100;
-        $valor = 0;
+        
 
         
         
@@ -66,7 +66,7 @@
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado" text="{{ $valor }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/>
+            <x-adminlte-info-box title="Valor Arrecadado" text="{{ 'R$ '.number_format($valorTotal, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/>
 
 
         </div>

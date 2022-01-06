@@ -28,31 +28,34 @@ class HomeController extends Controller
     public function index()
     {
 
-        $valor = 0;
+        $valorTotal = 0;
 
         $pedidosFeitos = Pedido::where('status', "2")->get();
-
+        
         if (!$pedidosFeitos == NULL) {
             foreach ($pedidosFeitos as $pedidosFeito) {
-                $ValorArrecadados = PedidoProduto::where('pedido_id', $pedidosFeito->getAttributes()['id']);
-                
-                foreach ($ValorArrecadados as $ValorArrecadado) {
-                    dd($ValorArrecadado);
-                    $valorProduto = Produto::where('id', $ValorArrecadado->getAttributes()['produto_id'])->get()->getAttibutes()['preco'];
-                    $valorTotal = $valorProduto * $ValorArrecadado->getAttributes()['quantidade'];
-                    $valor += $valorTotal;
+                $pedidoProdutos = PedidoProduto::where('pedido_id', $pedidosFeito->id)->get();
+                //dd(1);
+                foreach ($pedidoProdutos as $pedidoProduto) {
+                    
+                    $produto = Produto::find($pedidoProduto->produto_id);
+                    $valor = $produto->preco * $pedidoProduto->quantidade;
+                    $valorTotal += $valor;
                     
 
                 }
+                //d(0);
+                
             }
         }
 
 
-
+        //dd($valorTotal);
     
 
 
-        return view('home');
+        return view('home', ['valorTotal' => $valorTotal]);
+        
     }
 
     public function index2(String $notification)
