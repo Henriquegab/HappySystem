@@ -18,6 +18,7 @@
     @php
         use App\Models\Cliente;
         use App\Models\Produto;
+        use App\Models\PedidoProduto;
         use App\Models\Pedido;
         use App\Models\User;
 
@@ -25,7 +26,17 @@
         $metaProduto = 15;
         $progressoCliente = Cliente::count() / $metaCliente * 100;
         $progressoProduto = Produto::count() / $metaProduto * 100;
+        $valor = 0;
+
+        
+        
+
+
+
+
     @endphp
+
+    
 
     <div class="row">
 
@@ -40,7 +51,7 @@
         <div class="col-md-6">
             <x-adminlte-info-box title="Meta de Produtos" text="{{ Produto::count() }}/{{ $metaProduto }}" icon="fas fa-lg fa-shopping-bag text-dark"
             theme="danger" id="ibUpdatable" progress="{{ intval($progressoProduto) }}" progress-theme="teal"
-            description="{{ intval($progressoProduto) }}% reputation completed to reach next level"/>
+            description="{{ intval($progressoProduto) }}% da meta concluida!"/>
 
             
         </div>
@@ -51,11 +62,11 @@
 
         <div class="col-md-4">
 
-            <x-adminlte-info-box title="Views" text="424" icon="fas fa-lg fa-eye text-dark" theme="gradient-teal"/>
+            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-eye text-dark" theme="gradient-teal"/>
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Views" text="424" icon="fas fa-lg fa-eye text-dark" theme="gradient-teal"/>
+            <x-adminlte-info-box title="Valor Arrecadado" text="{{ $valor }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/>
 
 
         </div>
