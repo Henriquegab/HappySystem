@@ -26,6 +26,7 @@ Route::middleware('auth')->group(
 
 
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
+        Route::get('/home/{notification}', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
         Route::resource('clientes', ClienteController::class);
