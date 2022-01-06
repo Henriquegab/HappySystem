@@ -11,7 +11,11 @@
 
 
     @if (isset($notification))
-    <p align="center">{{ $notification }}</p>
+
+    <x-adminlte-alert theme="danger" title="Aviso!">
+        {{ $notification }}
+    </x-adminlte-alert>
+
 
     @endif
 @stop
