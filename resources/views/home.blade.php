@@ -62,11 +62,11 @@
 
         <div class="col-md-4">
 
-            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-eye text-dark" theme="gradient-teal"/>
+            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-shopping-cart text-dark" theme="pink"/>
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado" text="{{ 'R$ '.number_format($valorTotal, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="gradient-teal"/>
+            <x-adminlte-info-box title="Valor Arrecadado" text="{{ 'R$ '.number_format($valorTotal, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="green"/>
 
 
         </div>
