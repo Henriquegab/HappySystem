@@ -19,9 +19,12 @@
         use App\Models\Cliente;
         use App\Models\Produto;
         use App\Models\Pedido;
+        use App\Models\User;
 
         $metaCliente = 300;
-        $progresso = Cliente::count() / $metaCliente * 100;
+        $metaProduto = 15;
+        $progressoCliente = Cliente::count() / $metaCliente * 100;
+        $progressoProduto = Produto::count() / $metaProduto * 100;
     @endphp
 
     <div class="row">
@@ -29,15 +32,15 @@
 
         <div class="col-md-6">
             <x-adminlte-info-box title="Meta de Clientes" text="{{ Cliente::count() }}/{{ $metaCliente }}" icon="fas fa-lg fa-users text-orange" theme="warning"
-            icon-theme="dark" progress="{{ intval($progresso)  }}" progress-theme="dark"
-            description="{{ intval($progresso)  }}% da meta concluida!"/>
+            icon-theme="dark" progress="{{ intval($progressoCliente)  }}" progress-theme="dark"
+            description="{{ intval($progressoCliente)  }}% da meta concluida!"/>
         </div>
 
 
         <div class="col-md-6">
-            <x-adminlte-info-box title="Reputation" text="0/1000" icon="fas fa-lg fa-medal text-dark"
-            theme="danger" id="ibUpdatable" progress=0 progress-theme="teal"
-            description="0% reputation completed to reach next level"/>
+            <x-adminlte-info-box title="Meta de Produtos" text="{{ Produto::count() }}/{{ $metaProduto }}" icon="fas fa-lg fa-shopping-bag text-dark"
+            theme="danger" id="ibUpdatable" progress="{{ intval($progressoProduto) }}" progress-theme="teal"
+            description="{{ intval($progressoProduto) }}% reputation completed to reach next level"/>
 
             
         </div>
@@ -58,7 +61,7 @@
         </div>
 
         <div class="col-md-4">
-            <x-adminlte-info-box title="528" text="User Registrations" icon="fas fa-lg fa-user-plus text-primary"
+            <x-adminlte-info-box title="{{ User::count() }}" text="Usuários Cadastrados" icon="fas fa-lg fa-user-plus text-primary"
             theme="gradient-primary" icon-theme="white"/>
 
             
