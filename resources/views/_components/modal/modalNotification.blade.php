@@ -3,12 +3,12 @@
         <div style="height:50px">O pedido {{ $notification }} foi excluido!</div>
         <x-slot name="footerSlot">
         
-            <x-adminlte-button theme="success" label="Ok" data-dismiss="modal"/>
+            
             
         </x-slot>
     </x-adminlte-modal>
 
-<button id="botao" class="btn btn-xs btn-default text-danger mx-1 shadow" type="hidden" data-toggle="modal" data-target="#notify" title="Aviso!"></button>
+<button id="botao" hidden data-toggle="modal" data-target="#notify" title="Aviso!"></button>
 
    
 
