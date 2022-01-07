@@ -274,7 +274,7 @@ class PedidoProdutoController extends Controller
         if($verificar->isEmpty()){
             
 
-            $notification = 'O pedido '.$pedido->id.' foi excluído!';
+            $notification = $pedido->id;
             $pedido->delete();
             
             return redirect()->route('home2', ['notification' => $notification]);

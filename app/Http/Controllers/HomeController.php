@@ -60,7 +60,31 @@ class HomeController extends Controller
 
     public function index2(String $notification)
     {
-        return view('home', ['notification' => $notification]);
+
+        $valorTotal = 0;
+
+        $pedidosFeitos = Pedido::where('status', "2")->get();
+        
+        if (!$pedidosFeitos == NULL) {
+            foreach ($pedidosFeitos as $pedidosFeito) {
+                $pedidoProdutos = PedidoProduto::where('pedido_id', $pedidosFeito->id)->get();
+                //dd(1);
+                foreach ($pedidoProdutos as $pedidoProduto) {
+                    
+                    $produto = Produto::find($pedidoProduto->produto_id);
+                    $valor = $produto->preco * $pedidoProduto->quantidade;
+                    $valorTotal += $valor;
+                    
+
+                }
+                //d(0);
+                
+            }
+        }
+
+
+
+        return view('home', ['notification' => $notification, 'valorTotal' => $valorTotal]);
     }
 
 }

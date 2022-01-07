@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+
+
 @section('title', 'Menu')
 
 @section('content_header')
@@ -11,10 +13,15 @@
     <p align="center">Seja Bem-vindo!</p>
     @if (isset($notification))
 
-    <x-adminlte-alert theme="danger" title="Aviso!">
-        {{ $notification }}
-    </x-adminlte-alert>
+    @component('_components.modal.modalNotification', ['notification' => $notification])
+    
+    @endcomponent
+    
     @endif
+
+   
+    
+
 
     @php
         use App\Models\Cliente;
