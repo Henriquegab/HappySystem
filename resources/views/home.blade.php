@@ -74,7 +74,7 @@
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado em " text="{{ 'R$ '.number_format($valorTotal[6], 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="green"/>
+            <x-adminlte-info-box title="Valor Arrecadado em {{ $mesesEmNome[6] }}" text="{{ 'R$ '.number_format($valorTotal[6], 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="green"/>
 
 
         </div>
