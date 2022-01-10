@@ -82,14 +82,11 @@ class HomeController extends Controller
                     //d(0);
 
                 }
+
         }
 
         }
-        
     
-
-
-        //dd($valorTotal[6]);
 
 
 

@@ -57,7 +57,7 @@
 
 
         <div class="col-md-6">
-            <x-adminlte-info-box title="Meta de Produtos" text="{{ Produto::count() }}/{{ $metaProduto }}" icon="fas fa-lg fa-shopping-bag text-dark"
+            <x-adminlte-info-box title="Meta de Produtos" text="{{ Produto::count() }}/{{ $metaProduto }}" icon="fas fa-lg fa-shopping-bag text-white"
             theme="gray" id="ibUpdatable" progress="{{ intval($progressoProduto) }}" progress-theme="teal"
             description="{{ intval($progressoProduto) }}% da meta concluida!"/>
 
@@ -70,13 +70,13 @@
 
         <div class="col-md-4">
 
-            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-shopping-cart text-dark" theme="gray"/>
+            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-shopping-cart text-white" theme="gray"/>
         </div>
         <div class="col-md-4">
         
             <x-adminlte-info-box title="Valor Arrecadado em {{ $mesesEmNome[6] }}" text="{{ 'R$ '.number_format($valorTotal[6], 2) }}" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
 
-
+            
         </div>
 
         <div class="col-md-4">
