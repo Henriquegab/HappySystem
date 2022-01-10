@@ -34,10 +34,12 @@ class HomeController extends Controller
 
         $ano = $currentTime->toArray()['year'];
         $meses = array();
+        $mesesEmNome = array();
         $anos = array();
-        // $nomesMeses = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        $nomesMeses = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
         $mesAtual = $currentTime->toArray()['month'];
         for ($i = 6; $i > 0; $i--) {
+            $mesesEmNome[$i] = $nomesMeses[$mesAtual];
             $meses[$i] = $mesAtual;
             $anos[$i] = $ano;
             $mesAtual--;
@@ -56,26 +58,26 @@ class HomeController extends Controller
         
 
         $pedidosFeitos = array();
-        for ($i = 6; $i <= 6; $i++) {
-            $a = Pedido::where('status', "2")->whereMonth('created_at', $meses[$i])->whereYear('created_at', $anos[$i])->get()->first();
+        for ($i = 1; $i <= 6; $i++) {
+            $a = Pedido::where('status', "2")->whereMonth('created_at', $meses[$i])->whereYear('created_at', $anos[$i])->get();
             $pedidosFeitos[$i] = $a;
         }
-        dd($pedidosFeitos[$i]);
+        //dd($pedidosFeitos[6]);
 
         $valorTotal = array();
 
-        for ($i = 6; $i <= 6; $i++){
-
+        for ($i = 1; $i <= 6; $i++){
+            $valorTotal[$i] = 0;
             //$pedidosFeitos = Pedido::where('status', "2")->whereMonth('created_at', $meses[6])->get();
             if (!$pedidosFeitos[$i] == NULL) {
-                foreach ($pedidosFeitos as $pedidosFeito) {
+                foreach ($pedidosFeitos[$i] as $pedidosFeito) {
                     $pedidoProdutos = PedidoProduto::where('pedido_id', $pedidosFeito->id)->get();
                     //dd(1);
                     foreach ($pedidoProdutos as $pedidoProduto) {
 
                         $produto = Produto::find($pedidoProduto->produto_id);
                         $valor = $produto->preco * $pedidoProduto->quantidade;
-                        $valorTotal += $valor;
+                        $valorTotal[$i] += $valor;
                     }
                     //d(0);
 
@@ -87,11 +89,11 @@ class HomeController extends Controller
     
 
 
-        //dd($valorTotal);
+        //dd($valorTotal[6]);
 
 
 
-        return view('home', ['valorTotal' => $valorTotal]);
+        return view('home', ['valorTotal' => $valorTotal, 'meses' => $meses, 'mesesEmNome' => $mesesEmNome, 'anos' => $anos]);
     }
 
     public function index2(String $notification)

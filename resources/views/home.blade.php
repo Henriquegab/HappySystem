@@ -74,7 +74,7 @@
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado" text="{{ 'R$ '.number_format($valorTotal, 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="green"/>
+            <x-adminlte-info-box title="Valor Arrecadado em " text="{{ 'R$ '.number_format($valorTotal[6], 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="green"/>
 
 
         </div>
@@ -97,10 +97,10 @@
                     const myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Clientes', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            labels: ['<?php echo $mesesEmNome[1] ?> de <?php echo $anos[1] ?>', '<?php echo $mesesEmNome[2] ?> de <?php echo $anos[2] ?>', '<?php echo $mesesEmNome[3] ?> de <?php echo $anos[3] ?>', '<?php echo $mesesEmNome[4] ?> de <?php echo $anos[4] ?>', '<?php echo $mesesEmNome[5] ?> de <?php echo $anos[5] ?>', '<?php echo $mesesEmNome[6] ?> de <?php echo $anos[6] ?>'],
                             datasets: [{
                                 label: 'Quantia',
-                                data: [<?php echo Cliente::count() ?>, 240, 3, 5, 2, 3],
+                                data: [<?php echo $valorTotal[1] ?>, <?php echo $valorTotal[2] ?>, <?php echo $valorTotal[3] ?>, <?php echo $valorTotal[4] ?>, <?php echo $valorTotal[5] ?>, <?php echo $valorTotal[6] ?>],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
                                     'rgba(54, 162, 235, 0.2)',
