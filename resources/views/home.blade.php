@@ -50,15 +50,15 @@
 
 
         <div class="col-md-6">
-            <x-adminlte-info-box title="Meta de Clientes" text="{{ Cliente::count() }}/{{ $metaCliente }}" icon="fas fa-lg fa-users text-orange" theme="warning"
-            icon-theme="dark" progress="{{ intval($progressoCliente)  }}" progress-theme="dark"
+            <x-adminlte-info-box title="Meta de Clientes" text="{{ Cliente::count() }}/{{ $metaCliente }}" icon="fas fa-lg fa-users text-white" theme="gray"
+            icon-theme="dark" progress="{{ intval($progressoCliente)  }}" progress-theme="teal"
             description="{{ intval($progressoCliente)  }}% da meta concluida!"/>
         </div>
 
 
         <div class="col-md-6">
             <x-adminlte-info-box title="Meta de Produtos" text="{{ Produto::count() }}/{{ $metaProduto }}" icon="fas fa-lg fa-shopping-bag text-dark"
-            theme="danger" id="ibUpdatable" progress="{{ intval($progressoProduto) }}" progress-theme="teal"
+            theme="gray" id="ibUpdatable" progress="{{ intval($progressoProduto) }}" progress-theme="teal"
             description="{{ intval($progressoProduto) }}% da meta concluida!"/>
 
             
@@ -70,25 +70,25 @@
 
         <div class="col-md-4">
 
-            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-shopping-cart text-dark" theme="pink"/>
+            <x-adminlte-info-box title="Pedidos" text="{{ Pedido::count() }}" icon="fas fa-lg fa-shopping-cart text-dark" theme="gray"/>
         </div>
         <div class="col-md-4">
         
-            <x-adminlte-info-box title="Valor Arrecadado em {{ $mesesEmNome[6] }}" text="{{ 'R$ '.number_format($valorTotal[6], 2) }}" icon="fas fa-lg fa-dollar-sign text-dark" theme="green"/>
+            <x-adminlte-info-box title="Valor Arrecadado em {{ $mesesEmNome[6] }}" text="{{ 'R$ '.number_format($valorTotal[6], 2) }}" icon="fas fa-lg fa-dollar-sign text-green" theme="gray"/>
 
 
         </div>
 
         <div class="col-md-4">
-            <x-adminlte-info-box title="{{ User::count() }}" text="Usuários Cadastrados" icon="fas fa-lg fa-user-plus text-primary"
-            theme="gradient-primary" icon-theme="white"/>
+            <x-adminlte-info-box title="{{ User::count() }}" text="Usuários Cadastrados" icon="fas fa-lg fa-user-plus text-gray"
+            theme="gray" icon-theme="white"/>
 
             
         </div>
 
     </div>
 
-    <x-adminlte-card title="Valores arrecadados nos ultimos 6 meses" theme="purple" icon="fas fa-lg fa-fan" removable collapsible >
+    <x-adminlte-card title="Valores arrecadados nos ultimos 6 meses" theme="gray" icon="fas fa-lg fa-dollar-sign text-green" removable collapsible >
         
         
             <canvas id="myChart" width="200" height="50"></canvas>

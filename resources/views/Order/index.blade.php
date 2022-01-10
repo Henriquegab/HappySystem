@@ -43,7 +43,7 @@ use App\Models\PedidoProduto;
             'paging' => false,
             
             'ordering' => true,
-            'order' => [[0, 'asc']],
+            'order' => [[0, 'dsc']],
            //'columns' => ['orderable'=> true]
         ];
 
