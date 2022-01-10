@@ -88,9 +88,9 @@
 
     </div>
 
-    <x-adminlte-card title="Purple Card" theme="purple" icon="fas fa-lg fa-fan" removable collapsible >
+    <x-adminlte-card title="Valores arrecadados nos ultimos 6 meses" theme="purple" icon="fas fa-lg fa-fan" removable collapsible >
         
-       
+        
             <canvas id="myChart" width="200" height="50"></canvas>
                 <script>
                     const ctx = document.getElementById('myChart').getContext('2d');
@@ -99,7 +99,7 @@
                         data: {
                             labels: ['Clientes', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                             datasets: [{
-                                label: '# of Votes',
+                                label: 'Quantia',
                                 data: [<?php echo Cliente::count() ?>, 240, 3, 5, 2, 3],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',

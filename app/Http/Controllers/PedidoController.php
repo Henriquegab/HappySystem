@@ -7,6 +7,7 @@ use App\Models\Pedido;
 use App\Models\Produto;
 use App\Models\PedidoProduto;   
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PedidoController extends Controller
 {
@@ -17,6 +18,14 @@ class PedidoController extends Controller
      */
     public function index()
     {
+        /*$x = Pedido::whereMonth('created_at', '1');
+        //$x[0]->id;
+
+        $currentTime = Carbon::now();
+        //dd($x[1]->created_at->toArray()['month']);
+        
+        dd($x[1]->created_at->toArray()['month'] == 1);*/
+        
         $pedidos = Pedido::orderby('id', 'asc')->Paginate(30);
         $clientes = Cliente::all();
 
