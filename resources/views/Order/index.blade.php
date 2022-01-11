@@ -10,7 +10,8 @@
    
 @php
 use App\Models\Cliente;
-use App\Models\PedidoProduto;      
+use App\Models\PedidoProduto;
+use App\Models\Pedido;     
 @endphp
 
 
