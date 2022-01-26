@@ -129,7 +129,7 @@ class AppServiceProvider extends ServiceProvider
             
             [
                 'text' => 'Perfil',
-                'url'  => 'admin/settings',
+                'route' => 'usuarios.index',
                 'icon' => 'fas fa-fw fa-user',
             ],
             [
