@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -39,19 +40,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $nome = Auth::user()->name;
-        
-        $idUsuario = Auth::user()->id;
-        
-
-        $inserirImagem = User::find($idUsuario);
-        
-        $inserirImagem->image = $request->get('imagem');
-        $inserirImagem->save();
-        
-
-        return view('User.index', ['nome' => $nome]);
     }
 
     /**
@@ -83,9 +71,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $usuario)
     {
-        //
+
+
+        $imagem = $request->file('imagem');
+        $imagem_urn = $imagem->store('imagens', 'public');
+        $request->imagem = $imagem_urn;
+
+        $usuario->update($request->all());
+
+        
+        
+        //dd($imagem_urn);
+        return redirect()->route('usuarios.index');
     }
 
     /**
