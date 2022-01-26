@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 use Illuminate\Http\Request;
 
@@ -15,6 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $nome = Auth::user()->name;
+
         return view('User.index', ['nome' => $nome]);
     }
 
@@ -36,7 +39,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $nome = Auth::user()->name;
+        
+        $idUsuario = Auth::user()->id;
+        
+
+        $inserirImagem = User::find($idUsuario);
+        
+        $inserirImagem->image = $request->get('imagem');
+        $inserirImagem->save();
+        
+
+        return view('User.index', ['nome' => $nome]);
     }
 
     /**
