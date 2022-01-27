@@ -49,7 +49,6 @@ Route::middleware('auth')->group(
         Route::get('pedido-produto/edit/{id?}/{primeiro}/{pedido?}/{quantidade?}/{x}', [PedidoProdutoController::class, 'edit'])->name('pedido-produto.edit');
         Route::put('pedido-produto/update/{id?}/{primeiro}/{pedido?}/{quantidade}', [PedidoProdutoController::class, 'update'])->name('pedido-produto.update');
 
-        
     }
 
 );

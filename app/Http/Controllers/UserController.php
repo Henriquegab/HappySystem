@@ -73,16 +73,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $usuario)
     {
-
-
         $imagem = $request->file('imagem');
+        //dd($request->imagem);
         $imagem_urn = $imagem->store('imagens', 'public');
         $request->imagem = $imagem_urn;
 
         $usuario->update($request->all());
 
-        
-        
+
+
         //dd($imagem_urn);
         return redirect()->route('usuarios.index');
     }
